@@ -24,12 +24,12 @@
 }
 
 .mdl-grid {
-	max-width: 900px;
+  max-width: 900px;
 }
 
 .mdl-card {
-	background-color: #263238;
-	margin-top: 20%;
+  background-color: #263238;
+  margin-top: 20%;
 }
 
 .mdl-card h3.quote:before {

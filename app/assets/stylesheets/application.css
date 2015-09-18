@@ -28,20 +28,32 @@
 }
 
 .mdl-card {
-  background-color: #263238;
-  margin-top: 20%;
+  background-color: black;
 }
 
-.mdl-card h3.quote:before {
+h3.quote:before {
   content: '“';
 }
 
-.mdl-card h3.quote:after {
+h3.quote:after {
   content: '”';
 }
 
-.mdl-card h3.quote:before, .mdl-card h3.quote:after {
+h3.quote:before, h3.quote:after {
   display: block;
   font-size: 3em;
   margin-top: 0.5em;
+}
+
+.white-title {
+  color: white;
+  text-decoration: none;
+}
+
+.hide {
+  display: none;
+}
+
+.mdl-card__title {
+  font-size: 13px;
 }

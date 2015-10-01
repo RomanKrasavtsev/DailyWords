@@ -5,8 +5,8 @@ class Card < ActiveRecord::Base
   validate :original_text_equal_to_translated_text
 
   def original_text_equal_to_translated_text
-    if original_text.downcase == translated_text.downcase
-      errors.add(:original_text, "Слово и Перевод не должны быть одинаковые!")
+    if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
+      errors.add("Слово и Перевод", "не должны быть одинаковые!")
     end
   end
 end

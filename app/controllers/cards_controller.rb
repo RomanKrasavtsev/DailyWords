@@ -1,10 +1,15 @@
 class CardsController < ApplicationController
+  before_action :get_id, only: [:update, :edit]
+
   def index
     @cards = Card.all.order(original_text: :asc)
   end
 
   def new
     @card = Card.new
+  end
+
+  def edit
   end
 
   def create
@@ -17,13 +22,7 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
-    @card = Card.find(params[:id])
-  end
-
   def update
-    @card = Card.find(params[:id])
-
     if @card.update(card_params)
       redirect_to cards_path
     else
@@ -45,5 +44,9 @@ class CardsController < ApplicationController
                                  :original_text,
                                  :translated_text,
                                  :transcription)
+  end
+
+  def get_id
+    @card = Card.find(params[:id])
   end
 end

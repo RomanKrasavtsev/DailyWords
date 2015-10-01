@@ -598,3 +598,13 @@ input:focus ~ .highlight {
 .amazing .mdl-card__title {
   background-color: #263238;
 }
+
+#error_explanation {
+  background-color: rgb(255,64,129) !important;
+  min-height: 30px;
+}
+
+.error {
+  color: white;
+  font-size: 14px;
+}

@@ -6,6 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Card.create(original_text:"Fine", transcription: "[faɪn]",translated_text: "Сухой (о погоде), хороший, штраф", review_date: '10-10-2015')
-Card.create(original_text:"Meet / Met / Met", transcription: "[miːt] / [met] / [met]",translated_text: "Встречать, собираться, видеться", review_date: '10-10-2015')
-Card.create(original_text:"Phone", transcription: "[fəʊn]",translated_text: "Телефон, телефонная трубка, звонить по телефону", review_date: '10-10-2015')
+Card.create(original_text: "Fine",
+             transcription: "[faɪn]",
+             translated_text: "Сухой (о погоде), хороший, штраф",
+             review_date: "10-10-2015")
+Card.create(original_text: "Meet / Met / Met",
+             transcription: "[miːt] / [met] / [met]",
+             translated_text: "Встречать, собираться, видеться",
+             review_date: "10-10-2015")
+Card.create(original_text: "Phone",
+             transcription: "[fəʊn]",
+             translated_text: "Телефон, телефонная трубка, звонить по телефону",
+             review_date: "10-10-2015")

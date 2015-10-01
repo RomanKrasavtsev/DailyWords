@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
-  validates :review_date, :original_text, :translated_text, :transcription, presence: true
+  validates :review_date, :original_text, 
+            :translated_text, :transcription, presence: true
   validates :original_text, uniqueness: true
   validate :original_text_equal_to_translated_text
 

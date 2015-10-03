@@ -17,7 +17,6 @@ wiki_doc.css(".column ol li").each do |word|
   wiki_words << word.content.downcase
 end
 
-words = []
 wiki_words.uniq.sort.each do |original_text|
   cambridge_doc = Nokogiri::HTML(
     open("http://dictionary.cambridge.org/dictionary/english-russian/#{original_text}")
@@ -26,12 +25,10 @@ wiki_words.uniq.sort.each do |original_text|
   transcription = "[#{cambridge_doc.css('.ipa')[0].text}]"
   translated_text = cambridge_doc.css(".trans")[0].text.strip!
 
-  words << [original_text, transcription, translated_text]
-end
-
-words.each do |original_text, transcription, translated_text|
-  Card.create(original_text: original_text,
-              transcription: transcription,
-              translated_text: translated_text,
-              review_date: Date.today + 3.days)
+  Card.create(
+    original_text: original_text,
+    transcription: transcription,
+    translated_text: translated_text,
+    review_date: Date.today + 3.days
+  )
 end

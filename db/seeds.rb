@@ -5,16 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require "nokogiri"
+require "open-uri"
 
-Card.create(original_text: "Fine",
-            transcription: "[faɪn]",
-            translated_text: "Сухой (о погоде), хороший, штраф",
-            review_date: "10-10-2015")
-Card.create(original_text: "Meet / Met / Met",
-            transcription: "[miːt] / [met] / [met]",
-            translated_text: "Встречать, собираться, видеться",
-            review_date: "10-10-2015")
-Card.create(original_text: "Phone",
-            transcription: "[fəʊn]",
-            translated_text: "Телефон, телефонная трубка, звонить по телефону",
-            review_date: "10-10-2015")
+wiki_doc = Nokogiri::HTML(
+  open("https://en.wikipedia.org/wiki/Most_common_words_in_English")
+)
+
+wiki_words = []
+wiki_doc.css(".column ol li").each do |word|
+  wiki_words << word.content.downcase
+end
+
+wiki_words.uniq.sort.each do |original_text|
+  cambridge_doc = Nokogiri::HTML(
+    open("http://dictionary.cambridge.org/dictionary/english-russian/#{original_text}")
+  )
+
+  transcription = "[#{cambridge_doc.css('.ipa')[0].text}]"
+  translated_text = cambridge_doc.css(".trans")[0].text.strip!
+
+  Card.create(
+    original_text: original_text,
+    transcription: transcription,
+    translated_text: translated_text,
+    review_date: Date.today + 3.days
+  )
+end

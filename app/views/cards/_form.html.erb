@@ -16,10 +16,9 @@
     <div class="mdl-card__title meta">
       <div class="group">
         <%= f.text_field :review_date, required: true,
-          value: (card.new_record?
-                    ? 3.days.since
-                    : card.review_date
-                  ).strftime("%d-%m-%Y")
+          value: ( card.new_record? ? 3.days.since
+                   : card.review_date
+                 ).strftime("%d-%m-%Y")
         %>
         <span class="bar"></span>
         <%= f.label :review_date, "Дата пересмотра карточки" %>
@@ -53,8 +52,7 @@
     <div class="mdl-card__supporting-text meta meta--fill">
       <div>
         <%= f.button class: "mdl-button mdl-js-button" do
-          card.new_record?
-            ? content_tag(:submit, "Добавить")
+          card.new_record? ? content_tag(:submit, "Добавить")
             : content_tag(:submit, "Обновить")
         end %>
     </div>

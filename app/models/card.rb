@@ -17,8 +17,8 @@ class Card < ActiveRecord::Base
   protected
 
   def ensure_review_date_has_a_value
-    if review_date.nil?
-      review_date = 3.days.since
+    if self.review_date.nil?
+      self.review_date = 3.days.since
     end
   end
 end

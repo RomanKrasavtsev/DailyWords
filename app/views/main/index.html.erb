@@ -1,9 +1,36 @@
-<% "Первый в мире удобный менеджер флеш-карточек. Именно так.".split(" ").each do |word| %>
-  <div class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--8dp">
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp">
+  <% flash.each do |name, msg| %>
+    <%= content_tag
+      :div,
+      msg.html_safe,
+      class: "#{name} mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
+
+  <%= form_for :review, url: "review" do |f| %>
+    <%= f.hidden_field :id, value: @card.id %>
     <div class="mdl-card__title">
       <h3 class="quote">
-        <%= word %>
+        <div class="translated_text">
+          <%= @card.translated_text %>
+        </div>
       </h3>
     </div>
-  </div>
-<% end %>
+
+    <div class="original_text">
+      <div class="group">
+        <%= f.text_field :entered_text, required: true, autocomplete: 'off' %>
+        <span class="bar"></span>
+        <%= f.label :entered_text, "Перевод" %>
+      </div>
+    </div>
+
+    <div class="mdl-card__supporting-text meta meta--fill">
+      <div>
+        <button class="mdl-button mdl-js-button">
+          Проверить
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>

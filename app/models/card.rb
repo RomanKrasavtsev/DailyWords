@@ -17,8 +17,8 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def equal?(original_text, entered_text)
-    original_text.downcase == entered_text.downcase
+  def equal?(entered_text)
+    self.original_text.downcase == entered_text.downcase
   end
 
   protected

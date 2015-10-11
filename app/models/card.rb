@@ -7,11 +7,18 @@ class Card < ActiveRecord::Base
   scope :expired, -> {
     where("review_date <= '#{Time.zone.today}'").order("random()").first
   }
+  scope :all_asc, -> {
+    order("lower(original_text) ASC").all
+  }
 
   def original_text_equal_to_translated_text
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
       errors.add("Слово и Перевод", "не должны быть одинаковые!")
     end
+  end
+
+  def equal?(original_text, entered_text)
+    original_text.downcase == entered_text.downcase
   end
 
   protected

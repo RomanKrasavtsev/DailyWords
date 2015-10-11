@@ -15,7 +15,7 @@ class MainController < ApplicationController
     parameters = main_params
     card = Card.find(parameters[:id])
 
-    if card.original_text.downcase == parameters[:entered_text].downcase
+    if card.equal?(card.original_text, parameters[:entered_text])
       card.update(review_date: 3.days.since)
       flash[:true] = "Верно!"
     else

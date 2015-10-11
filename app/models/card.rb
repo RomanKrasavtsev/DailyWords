@@ -2,10 +2,10 @@ class Card < ActiveRecord::Base
   before_validation :ensure_review_date_has_a_value
   validates :original_text, :translated_text, :transcription, presence: true
   validates :original_text, uniqueness: true
-  validate  :original_text_equal_to_translated_text
+  validate :original_text_equal_to_translated_text
 
   scope :expired, -> {
-    where("review_date <= '#{Date.today}'").order("random()").first
+    where("review_date <= '#{Time.zone.today}'").order("random()").first
   }
 
   def original_text_equal_to_translated_text
@@ -17,8 +17,8 @@ class Card < ActiveRecord::Base
   protected
 
   def ensure_review_date_has_a_value
-    if self.review_date.nil?
-      self.review_date = 3.days.since
+    if review_date.nil?
+      review_date = 3.days.since
     end
   end
 end

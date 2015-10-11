@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   def index
     @card = Card.expired
-    
+
     if @card
       render "main/index"
     else

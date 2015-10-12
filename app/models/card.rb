@@ -5,10 +5,7 @@ class Card < ActiveRecord::Base
   validate :original_text_equal_to_translated_text
 
   scope :expired, -> {
-    where("review_date <= '#{Time.zone.today}'").order("random()").first
-  }
-  scope :all_asc, -> {
-    order("lower(original_text) ASC").all
+    where("review_date <= '#{Time.zone.today}'").order("random()")
   }
 
   def original_text_equal_to_translated_text
@@ -17,15 +14,18 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def equal?(entered_text)
-    self.original_text.downcase == entered_text.downcase
+  def equal_to_entered_text?(entered_text)
+    if self.original_text.mb_chars.downcase == entered_text.mb_chars.downcase
+      self.update(review_date: 3.days.since)
+      true
+    else
+      false
+    end
   end
 
   protected
 
   def ensure_review_date_has_a_value
-    if self.review_date.nil?
-      self.review_date = 3.days.since
-    end
+    self.review_date ||= 3.day.since
   end
 end

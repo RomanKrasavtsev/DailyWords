@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :get_id, only: [:update, :edit, :destroy]
 
   def index
-    @cards = Card.all_asc
+    @cards = Card.order("lower(original_text) ASC").all
   end
 
   def new

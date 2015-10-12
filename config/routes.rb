@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root "main#index"
-  post "review" => "main#check"
+  root "review#new"
+  post "review" => "review#create"
 
   resources :cards, except: :show
   # The priority is based upon order of creation: first created -> highest priority.

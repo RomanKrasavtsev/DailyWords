@@ -4,12 +4,8 @@ class Card < ActiveRecord::Base
   validates :original_text, uniqueness: true
   validate :original_text_equal_to_translated_text
 
-  scope :expired, -> {
-    where("review_date <= ?", Time.zone.today)
-  }
-  scope :review, -> {
-    expired.offset(rand(expired.count))
-  }
+  scope :expired, -> { where("review_date <= ?", Time.zone.today) }
+  scope :review, -> { expired.offset(rand(expired.count)) }
 
   def original_text_equal_to_translated_text
     original_text.strip!

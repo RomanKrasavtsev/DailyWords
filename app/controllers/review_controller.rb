@@ -8,11 +8,11 @@ class ReviewController < ApplicationController
 
     if card.check_translation(review_params[:entered_text])
       flash[:true] = "Верно!<br>
-                      Правильный ответ: #{card.original_text} #{card.transcription}<br>"
+        Правильный ответ: #{card.original_text} #{card.transcription}<br>"
     else
-      flash[:false] = "Не верно!<br>
-                       Правильный ответ: #{card.original_text} #{card.transcription}<br>
-                       Ваш ответ: #{review_params[:entered_text]}"
+      flsh[:false] = "Не верно!<br>
+        Правильный ответ: #{card.original_text} #{card.transcription}<br>
+        Ваш ответ: #{review_params[:entered_text]}"
     end
 
     redirect_to :back

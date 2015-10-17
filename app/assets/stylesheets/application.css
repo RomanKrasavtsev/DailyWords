@@ -26,7 +26,6 @@
 .mdl-grid {
   max-width: 900px;
   padding-top: 45px;
-  padding-left: 45px;
   display: -webkit-box !important;
   display: -webkit-flex !important;
   display: -ms-flexbox !important;
@@ -607,4 +606,34 @@ input:focus ~ .highlight {
 .error {
   color: white;
   font-size: 14px;
+}
+
+.original_text, .translated_text {
+  font-size: 25px;
+}
+
+.original_text {
+  padding: 16px;
+}
+
+.translated_text {
+  padding: 20px;
+}
+
+.card {
+  background: rgb(255,255,255);
+  border-radius: 2px;
+  padding: 16px 16px;
+}
+
+.center {
+  margin: 0 auto 0 auto;
+}
+
+.true {
+  color: green;
+}
+
+.false {
+  color: rgb(255,64,129);
 }

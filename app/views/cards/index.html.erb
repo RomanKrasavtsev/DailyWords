@@ -5,28 +5,28 @@
       <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="<%= card.id %>">
         <li class="mdl-menu__item mdl-js-ripple-effect">
           <%= link_to 'Редактировать', edit_card_path(card),
-            class: 'mdl-menu__item mdl-js-ripple-effect' 
+            class: 'mdl-menu__item mdl-js-ripple-effect'
           %>
         </li>
-        <li class="mdl-menu__item mdl-js-ripple-effect">          
-          <%= link_to 'Удалить', card, 
+        <li class="mdl-menu__item mdl-js-ripple-effect">
+          <%= link_to 'Удалить', card,
             class: 'mdl-menu__item mdl-js-ripple-effect',
-            method: :delete, data: { confirm: 'Вы уверены, что хотите удалить данную карточку?' } 
+            method: :delete, data: { confirm: 'Вы уверены, что хотите удалить данную карточку?' }
           %>
         </li>
       </ul>
       <button id="<%= card.id %>" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
         <i class="material-icons" role="presentation">more_vert</i>
-        <span class="visuallyhidden">show menu</span>
+        <span class="visuallyhidden">Показать меню</span>
       </button>
     </div>
 
     <div class="mdl-card__title">
       <h3 class="quote">
-        <div><%= card.original_text %></div>
-        <div class="hide"><%= card.translated_text %></div>
+        <div class="original_text"><%= card.original_text %></div>
       </h3>
     </div>
+    <div class="translated_text"><%= card.translated_text %></div>
     <div class="mdl-card__title meta mdl-color-text--grey-500">
       <strong><%= card.transcription %></strong>
     </div>

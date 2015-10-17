@@ -28,7 +28,6 @@ wiki_words.uniq.sort.each do |original_text|
   Card.create(
     original_text: original_text,
     transcription: transcription,
-    translated_text: translated_text,
-    review_date: Date.today + 3.days
+    translated_text: translated_text
   )
 end

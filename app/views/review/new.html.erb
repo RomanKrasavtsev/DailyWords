@@ -1,0 +1,43 @@
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp">
+  <% if @card.present? %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div,
+        msg.html_safe,
+        class: "#{name} mdl-card__supporting-text meta meta--fill"
+      %>
+    <% end %>
+    <%= form_for :review, url: "review" do |f| %>
+      <%= f.hidden_field :card_id, value: @card.id %>
+      <div class="mdl-card__title">
+        <h3 class="quote">
+          <div class="translated_text">
+            <%= @card.translated_text %>
+          </div>
+        </h3>
+      </div>
+      <div class="original_text">
+        <div class="group">
+          <%= f.text_field :entered_text, required: true, autocomplete: 'off' %>
+          <span class="bar"></span>
+          <%= f.label :entered_text, "Перевод" %>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text meta meta--fill">
+        <div>
+          <button class="mdl-button mdl-js-button">
+            Проверить
+          </button>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="mdl-card__title">
+      <h3 class="quote">
+        <div class="translated_text">
+          На сегодня нет слов для обучения.<br>
+          Обязательно возвращайтесь завтра!
+        </div>
+      </h3>
+    </div>
+  <% end %>
+</div>

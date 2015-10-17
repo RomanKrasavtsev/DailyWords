@@ -5,18 +5,27 @@ class Card < ActiveRecord::Base
   validate :original_text_equal_to_translated_text
 
   scope :expired, -> {
-    where("review_date <= '#{Time.zone.today}'").order("random()")
+    where("review_date <= ?", Time.zone.today)
+  }
+  scope :review, -> {
+    expired.offset(rand(expired.count))
   }
 
   def original_text_equal_to_translated_text
+    original_text.strip!
+    translated_text.strip!
+
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
       errors.add("Слово и Перевод", "не должны быть одинаковые!")
     end
   end
 
-  def equal_to_entered_text?(entered_text)
-    if self.original_text.mb_chars.downcase == entered_text.mb_chars.downcase
-      self.update(review_date: 3.days.since)
+  def check_translation(entered_text)
+    original_text.strip!
+    entered_text.strip!
+
+    if original_text.mb_chars.downcase == entered_text.mb_chars.downcase
+      update(review_date: 3.days.since)
       true
     else
       false
@@ -26,6 +35,6 @@ class Card < ActiveRecord::Base
   protected
 
   def ensure_review_date_has_a_value
-    self.review_date ||= 3.day.since
+    review_date ||= 3.day.since
   end
 end

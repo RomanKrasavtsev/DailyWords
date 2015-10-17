@@ -1,16 +1,17 @@
 class ReviewController < ApplicationController
   def new
-    @card = Card.expired.first
+    @card = Card.review.first
   end
 
   def create
-    card = Card.find(review_params[:id])
+    card = Card.find(review_params[:card_id])
 
-    if card.equal_to_entered_text?(review_params[:entered_text])
-      flash[:true] = "Верно!"
+    if card.check_translation(review_params[:entered_text])
+      flash[:true] = "Верно!<br>
+                      Правильный ответ: #{card.original_text} #{card.transcription}<br>"
     else
       flash[:false] = "Не верно!<br>
-                       Правильный ответ: #{card.original_text}<br>
+                       Правильный ответ: #{card.original_text} #{card.transcription}<br>
                        Ваш ответ: #{review_params[:entered_text]}"
     end
 
@@ -21,7 +22,7 @@ class ReviewController < ApplicationController
 
   def review_params
     params.require(:review).permit(
-      :id,
+      :card_id,
       :entered_text
     )
   end

@@ -7,7 +7,7 @@
       %>
     <% end %>
     <%= form_for :review, url: "review" do |f| %>
-      <%= f.hidden_field :id, value: @card.id %>
+      <%= f.hidden_field :card_id, value: @card.id %>
       <div class="mdl-card__title">
         <h3 class="quote">
           <div class="translated_text">

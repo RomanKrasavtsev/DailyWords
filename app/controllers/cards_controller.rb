@@ -13,7 +13,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = Card.new(cards_params)
 
     if @card.save
       redirect_to cards_path
@@ -23,7 +23,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update(card_params)
+    if @card.update(cards_params)
       redirect_to cards_path
     else
       render "edit"
@@ -38,7 +38,7 @@ class CardsController < ApplicationController
 
   private
 
-  def card_params
+  def cards_params
     params.require(:card).permit(:review_date,
                                  :original_text,
                                  :translated_text,

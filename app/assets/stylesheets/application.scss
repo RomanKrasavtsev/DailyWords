@@ -1,6 +1,6 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+ * listed below1.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
@@ -15,7 +15,7 @@
  */
 
 .layout-transparent {
-  background: url(asset_url("transparent.jpg")) center / cover;
+  background: url(image_path("transparent.jpg")) center / cover;
 }
 
 .layout-transparent .mdl-layout__header,

@@ -6,7 +6,7 @@
         class: "#{name} mdl-card__supporting-text meta meta--fill"
       %>
     <% end %>
-    <%= form_for :review, url: "review" do |f| %>
+    <%= form_for :review, url: :reviews do |f| %>
       <%= f.hidden_field :card_id, value: @card.id %>
       <div class="mdl-card__title">
         <h3 class="quote">
@@ -34,7 +34,7 @@
     <div class="mdl-card__title">
       <h3 class="quote">
         <div class="translated_text">
-          На сегодня нет слов для обучения.<br>
+          На сегодня нет слов для изучения.<br>
           Обязательно возвращайтесь завтра!
         </div>
       </h3>

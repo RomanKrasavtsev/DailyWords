@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "review#new"
+  root "reviews#new"
 
   resources :cards, except: :show
   resources :reviews, only: [:new, :create]

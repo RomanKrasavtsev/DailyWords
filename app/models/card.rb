@@ -31,6 +31,6 @@ class Card < ActiveRecord::Base
   protected
 
   def ensure_review_date_has_a_value
-    review_date ||= 3.days.since
+    self.review_date ||= 3.days.since
   end
 end

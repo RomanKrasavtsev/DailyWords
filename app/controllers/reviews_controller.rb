@@ -1,4 +1,4 @@
-class ReviewController < ApplicationController
+class ReviewsController < ApplicationController
   def new
     @card = Card.review.first
   end
@@ -10,7 +10,7 @@ class ReviewController < ApplicationController
       flash[:true] = "Верно!<br>
         Правильный ответ: #{card.original_text} #{card.transcription}<br>"
     else
-      flsh[:false] = "Не верно!<br>
+      flash[:false] = "Не верно!<br>
         Правильный ответ: #{card.original_text} #{card.transcription}<br>
         Ваш ответ: #{review_params[:entered_text]}"
     end

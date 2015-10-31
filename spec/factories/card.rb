@@ -5,7 +5,7 @@ FactoryGirl.define do
     transcription "[haʊs]"
 
     trait :expired do
-      review_date (-3).day.since
+      review_date (-3.day.since)
     end
   end
 end

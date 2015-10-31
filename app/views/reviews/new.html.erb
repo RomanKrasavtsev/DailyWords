@@ -1,11 +1,11 @@
 <div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div,
+      msg.html_safe,
+      class: "#{name} mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
   <% if @card.present? %>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div,
-        msg.html_safe,
-        class: "#{name} mdl-card__supporting-text meta meta--fill"
-      %>
-    <% end %>
     <%= form_for :review, url: :reviews do |f| %>
       <%= f.hidden_field :card_id, value: @card.id %>
       <div class="mdl-card__title">

@@ -4,6 +4,6 @@ rvm:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database dailywords_test;' -U postgres
-before_script:
   - cp config/database.yml.travis config/database.yml
+before_script:
+  - psql -c 'create database dailywords_test;' -U postgres

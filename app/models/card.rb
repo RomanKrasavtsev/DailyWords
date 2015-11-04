@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
   belongs_to :users
 
   before_validation :ensure_review_date_has_a_value
-  validates :original_text, :translated_text, :transcription, presence: true
+  validates :original_text, :translated_text, :transcription, :user_id, presence: true
   validates :original_text, uniqueness: true
   validate :original_text_equal_to_translated_text
 

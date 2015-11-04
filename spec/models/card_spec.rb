@@ -1,11 +1,16 @@
 require "rails_helper"
 
 describe Card do
+  before(:each) do
+    @user = create(:user)
+  end
+
   it "validates with erorrs" do
     card = Card.new(
       original_text: "Дом",
       translated_text: "дОм",
-      transcription: "[haʊs]"
+      transcription: "[haʊs]",
+      user_id: @user.id
     )
 
     card.valid?
@@ -17,7 +22,8 @@ describe Card do
       Card.new(
         original_text: "house",
         translated_text: "дом",
-        transcription: "[haʊs]"
+        transcription: "[haʊs]",
+        user_id: @user.id
       )
     end
 

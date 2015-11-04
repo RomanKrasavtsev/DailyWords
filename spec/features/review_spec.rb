@@ -2,7 +2,8 @@ require "rails_helper"
 
 context "review can be started" do
   before(:each) do
-    create(:card, :expired)
+    user = create(:user)
+    create(:card, :expired, user_id: user.id)
     visit root_path
   end
 

@@ -1,9 +1,5 @@
 require "rails_helper"
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
-
 describe "Cards" do
   before(:each) do
     @user = create(:user)

@@ -11,14 +11,14 @@ describe "Review" do
     click_button "Войти"
   end
 
-  it "will be right", js:true do
+  it "will be right", js: true do
     visit root_path
     fill_in "review_entered_text", with: "House"
     click_button "Проверить"
     expect(page).to have_content "Верно!"
   end
 
-  it "will be wrong", js:true do
+  it "will be wrong", js: true do
     visit root_path
     fill_in "review_entered_text", with: "Haus"
     click_button "Проверить"

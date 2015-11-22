@@ -25,6 +25,6 @@ describe "session" do
     fill_in "email", with: @user.email
     fill_in "password", with: "secret1"
     click_button "Войти"
-    expect(page).to have_content "Неверный логин или пароль!"    
+    expect(page).to have_content "Неверный логин или пароль!"
   end
 end

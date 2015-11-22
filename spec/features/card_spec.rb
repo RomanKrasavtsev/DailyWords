@@ -1,7 +1,7 @@
 require "rails_helper"
 
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
 describe "Cards" do
@@ -17,7 +17,7 @@ describe "Cards" do
 
   it "can be added" do
     visit new_card_path
-    
+
     fill_in "card_original_text", with: "mother"
     fill_in "card_translated_text", with: "мама"
     fill_in "card_transcription", with: "[ˈmʌðə]"
@@ -38,7 +38,7 @@ describe "Cards" do
     expect(page).to have_content "mother"
   end
 
-  it "can be deleted", js:true do
+  it "can be deleted", js: true do
     visit cards_path
     click_button "#{@card.id}"
     click_link "Удалить"

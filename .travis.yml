@@ -4,5 +4,7 @@ rvm:
 services:
   - postgresql
 before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database dailywords_test;' -U postgres

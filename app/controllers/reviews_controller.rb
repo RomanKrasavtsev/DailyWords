@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   def new
-    @card = Card.review.first
+    @title = "Проверка"
+    @card = current_user.cards.review.first
+    @quantity = current_user.cards.count
   end
 
   def create
-    card = Card.find(review_params[:card_id])
+    card = current_user.cards.find(review_params[:card_id])
 
     if card.check_translation(review_params[:entered_text])
       flash[:true] = "Верно!<br>

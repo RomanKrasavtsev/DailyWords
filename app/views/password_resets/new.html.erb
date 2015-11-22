@@ -1,0 +1,27 @@
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" style="min-height: 300px;">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div,
+      msg.html_safe,
+      class: "#{name} mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
+
+  <%= form_tag password_resets_path, :method => :post do %>
+    <div class="top">
+      <div class="original_text login">
+        <div class="group">
+          <%= text_field_tag :email, nil, required: true %>
+          <span class="bar"></span>   
+          <%= label_tag :email, "Email" %>
+        </div>
+      </div>
+     </div>
+     <div class="mdl-card__supporting-text meta meta--fill">
+      <div>
+        <button class="mdl-button mdl-js-button">
+          Сбросить пароль
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>

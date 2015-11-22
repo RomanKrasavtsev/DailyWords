@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   root "reviews#new"
+
+  get "signup"    => "users#new",         as: "signup"
+  get "settings"  => "users#edit",        as: "settings"
+  get "login"     => "sessions#new",      as: "login"
+  get "logout"    => "sessions#destroy",  as: "logout"
 
   resources :cards, except: :show
   resources :reviews, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
+  resources :sessions, only: [:create, :destroy]
+  resources :password_resets
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

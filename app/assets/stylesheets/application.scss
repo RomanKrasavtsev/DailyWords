@@ -49,12 +49,12 @@ h3.quote:before, h3.quote:after {
 
 .mdl-card__title {
   font-size: 13px;
-  padding: 0px;
+  padding: 0;
 }
 
 .group { 
   position: relative; 
-  padding: 25px 0px 25px 0px; 
+  padding: 25px 0; 
 }
 
 .mdl-button {
@@ -64,7 +64,7 @@ h3.quote:before, h3.quote:after {
 
 input {
   font-size: 18px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
   display: block;
   width: 300px;
   border: none;
@@ -91,7 +91,7 @@ label {
 }
 
 .field_with_errors label, input:focus ~ label, input:valid ~ label {
-  top: 0px;
+  top: 0;
   font-size: 14px;
   color: black;
 }
@@ -624,7 +624,7 @@ input:focus ~ .highlight {
 
 .mdl-badge[data-badge]:after {
   right: -5px;
-  top: 0px;
+  top: 0;
 }
 
 .transcription {

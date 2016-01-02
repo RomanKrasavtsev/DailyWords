@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   def new
-    @title = "Проверка"
     @card = current_user.cards.review.first
     @quantity = current_user.cards.count
   end

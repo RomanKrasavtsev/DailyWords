@@ -1,8 +1,7 @@
-class SessionsController < ApplicationController
+class LoginsController < ApplicationController
   skip_before_action :require_login, except: [:destroy]
 
   def new
-    @title = "Вход"
     @user = User.new
   end
 

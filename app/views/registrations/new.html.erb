@@ -1,3 +1,4 @@
+<% content_for :title, "Регистрация" %>
 <div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" >
   <% flash.each do |name, msg| %>
     <%= content_tag :div,
@@ -6,9 +7,9 @@
     %>
   <% end %>
 
-  <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <% for message in @user.errors.full_messages %>
+  <%= form_for @registration, url: registrations_path do |f| %>
+    <% if @registration.errors.any? %>
+      <% for message in @registration.errors.full_messages %>
         <%= content_tag :div,
           message,
           class: "error mdl-card__supporting-text meta meta--fill"
@@ -26,7 +27,7 @@
         <div class="group">
           <%= f.password_field :password, required: true %>
           <span class="bar"></span>
-          <%= f.label :password, "Пароль" %>
+          <%= label_tag :password, "Пароль" %>
         </div>
         <div class="group">
           <%= f.password_field :password_confirmation, required: true %>

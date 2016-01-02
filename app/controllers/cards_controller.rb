@@ -3,17 +3,14 @@ class CardsController < ApplicationController
   before_action :quantity, only: [:index, :new, :update, :edit]
 
   def index
-    @title = "Все карточки"
     @cards = current_user.cards.order("lower(original_text) ASC").all
   end
 
   def new
-    @title = "Добавление карточки"
     @card = current_user.cards.new
   end
 
   def edit
-    @title = "Редактирование карточки"
   end
 
   def create

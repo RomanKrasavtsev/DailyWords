@@ -2,11 +2,7 @@
 <html>
 <head>
   <title>
-    <% if @title.nil? %>
-      DailyWords
-    <% else %>
-      <%= @title %>
-    <% end %>
+    <%= yield :title %>
   </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>

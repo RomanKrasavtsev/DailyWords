@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "roman@dailywords.ru"
+  default from: ENV["SUPPORT_MAIL"]
   layout 'mailer'
 end

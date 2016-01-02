@@ -1,3 +1,4 @@
+<% content_for :title, "Настройки" %>
 <div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" >
   <% flash.each do |name, msg| %>
     <%= content_tag :div,
@@ -6,9 +7,9 @@
     %>
   <% end %>
 
-  <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-      <% for message in @user.errors.full_messages %>
+  <%= form_tag settings_path do |f| %>
+    <% if @profile.errors.any? %>
+      <% for message in @profile.errors.full_messages %>
         <%= content_tag :div,
           message,
           class: "error mdl-card__supporting-text meta meta--fill"
@@ -19,24 +20,24 @@
     <div class="top">
       <div class="original_text login">
         <div class="group">
-          <%= f.text_field :email, required: true %>
+          <%= text_field_tag :email, nil, required: true %>
           <span class="bar"></span>
-          <%= f.label :email, "Email" %>
+          <%= label_tag :email, "Email" %>
         </div>
         <div class="group">
-          <%= f.password_field :old_password, required: true %>
+          <%= password_field_tag :old_password, nil, required: true %>
           <span class="bar"></span>
-          <%= f.label :old_password, "Текущий пароль" %>
+          <%= label_tag :old_password, "Текущий пароль" %>
         </div>
         <div class="group">
-          <%= f.password_field :password, required: true %>
+          <%= password_field_tag :password, nil, required: true %>
           <span class="bar"></span>
-          <%= f.label :password, "Новый пароль" %>
+          <%= label_tag :password, "Новый пароль" %>
         </div>
         <div class="group">
-          <%= f.password_field :password_confirmation, required: true %>
+          <%= password_field_tag :password_confirmation, nil, required: true %>
           <span class="bar"></span>
-          <%= f.label :password_confirmation, "Повторите новый пароль" %>
+          <%= label_tag :password_confirmation, "Повторите новый пароль" %>
         </div>
       </div>
     </div>

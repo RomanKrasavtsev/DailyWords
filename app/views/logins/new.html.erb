@@ -1,3 +1,4 @@
+<% content_for :title, "Вход" %>
 <div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" style="min-height: 300px;">
   <% flash.each do |name, msg| %>
     <%= content_tag :div,
@@ -6,7 +7,7 @@
     %>
   <% end %>
 
-  <%= form_tag sessions_path, method: :post do %>
+  <%= form_tag logins_path, method: :post do %>
     <div class="top">
       <div class="original_text login">
         <div class="group">

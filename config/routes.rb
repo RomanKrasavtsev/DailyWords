@@ -5,17 +5,17 @@ Rails.application.routes.draw do
   root "reviews#new"
 
   resources :registrations, only: [:create]
-  get "signup"    => "registrations#new",  as: "signup"
+  get "signup" => "registrations#new", as: "signup"
 
   resources :profiles, only: [:update]
-  get "profile"   => "profiles#edit", as: "settings"
+  get "profile" => "profiles#edit", as: "settings"
 
   resources :logins, only: [:create]
-  get "login"     => "logins#new",      as: "login"
-  get "logout"    => "logins#destroy",  as: "logout"
+  get "login" => "logins#new", as: "login"
+  get "logout" => "logins#destroy", as: "logout"
 
   resources :cards, except: :show
-  resources :reviews, only: [:new, :create] 
+  resources :reviews, only: [:new, :create]
   resources :password_resets
 
   # The priority is based upon order of creation: first created -> highest priority.

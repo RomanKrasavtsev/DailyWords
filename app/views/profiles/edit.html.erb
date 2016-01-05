@@ -8,8 +8,8 @@
   <% end %>
 
   <%= form_tag settings_path do |f| %>
-    <% if @profile.errors.any? %>
-      <% for message in @profile.errors.full_messages %>
+    <% if @user.errors.any? %>
+      <% for message in @user.errors.full_messages %>
         <%= content_tag :div,
           message,
           class: "error mdl-card__supporting-text meta meta--fill"

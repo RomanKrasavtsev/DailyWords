@@ -6,9 +6,9 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new(registration_params)
+    @user = User.new(user_params)
 
-    if @registration.save
+    if @user.save
       auto_login(@user)
       redirect_to root_path
     else
@@ -18,7 +18,7 @@ class RegistrationsController < ApplicationController
 
   private
 
-  def registration_params
+  def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

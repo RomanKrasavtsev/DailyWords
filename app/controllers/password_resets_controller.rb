@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
   # you get here when the user entered his email in the reset
   # password form and submitted it.
   def create
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by(email: params[:email])
 
     # This line sends an email to the user with instructions on
     # how to reset their password (a url with a random token)
@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
     # about which emails exist in the system.
     redirect_to(
       root_path,
-      notice: "Вам на почту была выслана инструкция по смене пароля"
+      notice: t(:password_tutorial)
     )
   end
 
@@ -47,7 +47,7 @@ class PasswordResetsController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
     # the next line clears the temporary token and updates the password
     if @user.change_password!(params[:user][:password])
-      redirect_to(root_path, notice: "Пароль был успешно изменен.")
+      redirect_to(root_path, notice: t(:password_changed))
     else
       render action: "edit"
     end

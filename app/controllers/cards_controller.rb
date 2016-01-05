@@ -1,9 +1,9 @@
 class CardsController < ApplicationController
-  before_action :get_id, only: [:update, :edit, :destroy]
+  before_action :set_card, only: [:update, :edit, :destroy]
   before_action :quantity, only: [:index, :new, :update, :edit]
 
   def index
-    @cards = current_user.cards.order("lower(original_text) ASC").all
+    @cards ||= current_user.cards.order("lower(original_text) ASC").all
   end
 
   def new
@@ -48,11 +48,11 @@ class CardsController < ApplicationController
     )
   end
 
-  def get_id
-    @card = current_user.cards.find(params[:id])
+  def set_card
+    @card ||= current_user.cards.find(params[:id])
   end
 
   def quantity
-    @quantity = current_user.cards.count
+    @quantity ||= current_user.cards.count
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Cards" do
+describe "cards" do
   before(:each) do
     @user = create(:user)
     @card = create(:card, :expired, user_id: @user.id)

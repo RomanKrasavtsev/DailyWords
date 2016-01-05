@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "sessions" do
+describe "profiles" do
   before(:each) do
     @user = create(:user)
 

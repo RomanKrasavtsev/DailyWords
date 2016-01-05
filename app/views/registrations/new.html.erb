@@ -7,9 +7,9 @@
     %>
   <% end %>
 
-  <%= form_for @registration, url: registrations_path do |f| %>
-    <% if @registration.errors.any? %>
-      <% for message in @registration.errors.full_messages %>
+  <%= form_for @user, url: registrations_path do |f| %>
+    <% if @user.errors.any? %>
+      <% for message in @user.errors.full_messages %>
         <%= content_tag :div,
           message,
           class: "error mdl-card__supporting-text meta meta--fill"

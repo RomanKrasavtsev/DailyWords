@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:update]
   get "profile" => "profiles#edit", as: "settings"
 
-  resources :logins, only: [:create]
-  get "login" => "logins#new", as: "login"
-  get "logout" => "logins#destroy", as: "logout"
+  resources :sessions, only: [:create]
+  get "login" => "sessions#new", as: "login"
+  get "logout" => "sessions#destroy", as: "logout"
 
   resources :cards, except: :show
   resources :reviews, only: [:new, :create]

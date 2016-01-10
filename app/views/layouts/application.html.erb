@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DailyWords</title>
+  <title>
+    <%= yield :title %>
+  </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,8 +17,17 @@
       <%= link_to "DailyWords", root_path, class: "mdl-layout-title white-title" %>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
-        <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
-        <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
+        <% if current_user %>
+          <span class="mdl-badge" data-badge="<%= @quantity %>">
+            <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
+          </span>
+          <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
+          <%= link_to "Настройки", settings_path, class: "mdl-navigation__link" %>
+          <%= link_to "Выйти", logout_path, class: "mdl-navigation__link" %>
+        <% else %>
+          <%= link_to "Регистрация", signup_path, class: "mdl-navigation__link" %>
+          <%= link_to "Войти", login_path, class: "mdl-navigation__link" %>
+        <% end %>
       </nav>
     </div>
   </header>
@@ -24,8 +35,15 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">DailyWords</span>
     <nav class="mdl-navigation">
-     <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
-     <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
+      <% if current_user %>
+        <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
+        <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
+        <%= link_to "Настройки", settings_path, class: "mdl-navigation__link" %>
+        <%= link_to "Выйти", logout_path, class: "mdl-navigation__link" %>
+      <% else %>
+        <%= link_to "Регистрация", signup_path, class: "mdl-navigation__link" %>
+        <%= link_to "Войти", login_path, class: "mdl-navigation__link" %>
+      <% end %>
     </nav>
   </div>
 

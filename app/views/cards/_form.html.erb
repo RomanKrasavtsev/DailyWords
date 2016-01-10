@@ -1,61 +1,54 @@
-<%= form_for card do |f| %>
-  <% if card.errors.any? %>
-    <div id="error_explanation"
-      class="center mdl-card mdl-cell mdl-cell--12-col mdl-shadow--8dp">
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp">
+  <% card.errors.full_messages.each do |msg| %>
+    <%= content_tag :div,
+        msg,
+        class: "error mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
+  <%= form_for card do |f| %>
+    <div class="top">
       <div class="mdl-card__title meta">
-        <% card.errors.full_messages.each do |msg| %>
-        <div class="error">
-          <%= msg %>
+        <div class="group">
+          <%= f.text_field :review_date, required: true,
+            value: ( card.new_record? ? 3.days.since
+                     : card.review_date
+                   ).strftime("%d-%m-%Y")
+          %>
+          <span class="bar"></span>
+          <%= f.label :review_date, "Дата пересмотра карточки" %>
         </div>
-        <% end %>
+      </div>
+      <div class="mdl-card__title">
+        <h3 class="quote">
+          <div class="group">
+            <%= f.text_field :original_text, required: true %>
+            <span class="bar"></span>
+            <%= f.label :original_text, "Слово" %>
+          </div>
+          <div class="group">
+            <%= f.text_field :translated_text, required: true %>
+            <span class="bar"></span>
+            <%= f.label :translated_text, "Перевод" %>
+          </div>
+        </h3>
+      </div>
+      <div class="mdl-card__title meta">
+        <div class="group">
+          <%= f.text_field :transcription, required: true %>
+          <span class="bar"></span>
+          <%= f.label :transcription, "Транскрипция" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="bittom">
+      <div class="mdl-card__supporting-text meta meta--fill">
+        <div>
+          <button class="mdl-button mdl-js-button">
+              <%= card.new_record? ? "Добавить" : "Обновить" %>
+          </button>
+        </div>
       </div>
     </div>
   <% end %>
-
-  <div class="center mdl-card mdl-cell mdl-cell--12-col mdl-shadow--8dp">
-    <div class="mdl-card__title meta">
-      <div class="group">
-        <%= f.text_field :review_date, required: true,
-          value: ( card.new_record? ? 3.days.since
-                   : card.review_date
-                 ).strftime("%d-%m-%Y")
-        %>
-        <span class="bar"></span>
-        <%= f.label :review_date, "Дата пересмотра карточки" %>
-      </div>
-    </div>
-
-    <div class="mdl-card__title">
-      <h3 class="quote">
-        <div class="group">
-          <%= f.text_field :original_text, required: true %>
-          <span class="bar"></span>
-          <%= f.label :original_text, "Слово" %>
-        </div>
-
-        <div class="group">
-          <%= f.text_field :translated_text, required: true %>
-          <span class="bar"></span>
-          <%= f.label :translated_text, "Перевод" %>
-        </div>
-      </h3>
-    </div>
-
-    <div class="mdl-card__title meta">
-      <div class="group">
-        <%= f.text_field :transcription, required: true %>
-        <span class="bar"></span>
-        <%= f.label :transcription, "Транскрипция" %>
-      </div>
-    </div>
-
-    <div class="mdl-card__supporting-text meta meta--fill">
-      <div>
-        <%= f.button class: "mdl-button mdl-js-button" do
-          card.new_record? ? content_tag(:submit, "Добавить")
-            : content_tag(:submit, "Обновить")
-        end %>
-    </div>
-    </div>
-  </div>
-<% end %>
+</div>

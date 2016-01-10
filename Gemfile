@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
+gem "sorcery", '~> 0.9.1'
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
@@ -39,6 +40,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem "selenium-webdriver"
+  gem "database_cleaner"
   
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

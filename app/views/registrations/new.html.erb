@@ -1,0 +1,47 @@
+<% content_for :title, "Регистрация" %>
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" >
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div,
+      msg.html_safe,
+      class: "error mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
+
+  <%= form_for @user, url: registrations_path do |f| %>
+    <% if @user.errors.any? %>
+      <% for message in @user.errors.full_messages %>
+        <%= content_tag :div,
+          message,
+          class: "error mdl-card__supporting-text meta meta--fill"
+        %>
+      <% end %>
+    <% end %>
+
+    <div class="top">
+      <div class="original_text login">
+        <div class="group">
+          <%= f.text_field :email, required: true %>
+          <span class="bar"></span>
+          <%= f.label :email, "Email" %>
+        </div>
+        <div class="group">
+          <%= f.password_field :password, required: true %>
+          <span class="bar"></span>
+          <%= label_tag :password, "Пароль" %>
+        </div>
+        <div class="group">
+          <%= f.password_field :password_confirmation, required: true %>
+          <span class="bar"></span>
+          <%= f.label :password_confirmation, "Повторите пароль" %>
+        </div>
+      </div>
+    </div>
+    <div class="mdl-card__supporting-text meta meta--fill">
+      <div>
+        <button class="mdl-button mdl-js-button">
+          Зарегистрироваться
+        </button>
+      </div>
+    </div>
+  <% end %>
+<end>

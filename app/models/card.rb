@@ -15,7 +15,7 @@ class Card < ActiveRecord::Base
     translated_text.strip!
 
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
-      errors.add("Слово и Перевод", "не должны быть одинаковые!")
+      errors.add(:original_text)
     end
   end
 

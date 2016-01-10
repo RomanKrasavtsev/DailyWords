@@ -1,3 +1,4 @@
+<% content_for :title, "Проверка" %>
 <div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp">
   <% flash.each do |name, msg| %>
     <%= content_tag :div,
@@ -5,39 +6,50 @@
       class: "#{name} mdl-card__supporting-text meta meta--fill"
     %>
   <% end %>
-  <% if @card.present? %>
-    <%= form_for :review, url: :reviews do |f| %>
-      <%= f.hidden_field :card_id, value: @card.id %>
+  <% if @card.present? && @card.errors.any? %>
+    <% for message in @card.errors.full_messages %>
+      <%= content_tag :div,
+        message,
+        class: "error mdl-card__supporting-text meta meta--fill"
+      %>
+    <% end %>
+  <% end %>    
+  <div class="top">
+    <% if @card.present? %>
+      <%= form_for :review, url: :reviews do |f| %>
+        <%= f.hidden_field :card_id, value: @card.id %>
+          <div class="mdl-card__title">
+            <h3 class="quote">
+              <div class="translated_text">
+                <%= @card.translated_text %>
+              </div>
+            </h3>
+          </div>
+          <div class="original_text">
+            <div class="group">
+              <%= f.text_field :entered_text, autocomplete: 'off' %>
+              <span class="bar"></span>
+              <%= f.label :entered_text, "Перевод" %>
+            </div>
+          </div>
+        </div>
+        <div class="mdl-card__supporting-text meta meta--fill">
+          <div>
+            <button class="mdl-button mdl-js-button">
+              Проверить
+            </button>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
       <div class="mdl-card__title">
         <h3 class="quote">
           <div class="translated_text">
-            <%= @card.translated_text %>
+            На сегодня нет слов для изучения.<br>
+            Обязательно возвращайтесь завтра!
           </div>
         </h3>
       </div>
-      <div class="original_text">
-        <div class="group">
-          <%= f.text_field :entered_text, required: true, autocomplete: 'off' %>
-          <span class="bar"></span>
-          <%= f.label :entered_text, "Перевод" %>
-        </div>
-      </div>
-      <div class="mdl-card__supporting-text meta meta--fill">
-        <div>
-          <button class="mdl-button mdl-js-button">
-            Проверить
-          </button>
-        </div>
-      </div>
     <% end %>
-  <% else %>
-    <div class="mdl-card__title">
-      <h3 class="quote">
-        <div class="translated_text">
-          На сегодня нет слов для изучения.<br>
-          Обязательно возвращайтесь завтра!
-        </div>
-      </h3>
-    </div>
-  <% end %>
+  </div>
 </div>

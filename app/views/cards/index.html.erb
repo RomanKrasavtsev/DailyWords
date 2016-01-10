@@ -1,7 +1,8 @@
+<% content_for :title, "Все карточки" %>
 <% @cards.each do |card| %>
   <div class="mdl-card mdl-cell mdl-cell--4-col mdl-shadow--8dp">
     <div class="mdl-card__supporting-text meta meta--fill">
-        <strong> <%= card.review_date.strftime("%d-%m-%Y") %> </strong>
+      <strong> <%= card.review_date.strftime("%d-%m-%Y") %> </strong>
       <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="<%= card.id %>">
         <li class="mdl-menu__item mdl-js-ripple-effect">
           <%= link_to 'Редактировать', edit_card_path(card),
@@ -20,14 +21,15 @@
         <span class="visuallyhidden">Показать меню</span>
       </button>
     </div>
-
-    <div class="mdl-card__title">
-      <h3 class="quote">
-        <div class="original_text"><%= card.original_text %></div>
-      </h3>
+    <div class="top">
+      <div class="mdl-card__title">
+        <h3 class="quote">
+          <div class="original_text"><%= card.original_text %></div>
+        </h3>
+      </div>
+      <div class="translated_text"><%= card.translated_text %></div>
     </div>
-    <div class="translated_text"><%= card.translated_text %></div>
-    <div class="mdl-card__title meta mdl-color-text--grey-500">
+    <div class="mdl-card__supporting-text meta meta--fill">
       <strong><%= card.transcription %></strong>
     </div>
   </div>

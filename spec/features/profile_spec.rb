@@ -42,7 +42,7 @@ describe "profile" do
     fill_in "user_password_confirmation", with: "secret1"
     click_button "Изменить"
 
-    expect(page).to have_content "Пароль и Подтверждение должны совпадать!"
+    expect(page).to have_content "Подтверждение и пароль должны совпадать!"
   end
 
   it "can be changed changes email" do

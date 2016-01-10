@@ -6,20 +6,20 @@ class ProfilesController < ApplicationController
 
   def update
     if User.authenticate(current_user.email, user_params[:old_password])
-      if user_params[:password] != user_params[:password_confirmation]
-        flash[:error] = t(:confirmation)
+      if current_user.update(
+          email: user_params[:email],
+          password: user_params[:password],
+          password_confirmation: user_params[:password_confirmation]
+        )  
+        flash[:true] = t(:profile_updated)
         redirect_to settings_path
-        return
+      else
+        @user = current_user
+        render "edit"
       end
-
-      current_user.change_password!(user_params[:password])
-      current_user.update(email: user_params[:email])
-      flash[:true] = t(:profile_updated)
-      redirect_to settings_path
     else
       flash[:error] = t(:wrong_password)
       redirect_to settings_path
-      return
     end
   end
 

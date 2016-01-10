@@ -42,6 +42,6 @@ describe "registration" do
     fill_in "user_password", with: "secret"
     fill_in "user_password_confirmation", with: "secret1"
     click_button "Зарегистрироваться"
-    expect(page).to have_content "Пароль и Подтверждение должны совпадать!"
+    expect(page).to have_content "Подтверждение и пароль должны совпадать!"
   end
 end

@@ -52,9 +52,9 @@ h3.quote:before, h3.quote:after {
   padding: 0;
 }
 
-.group { 
-  position: relative; 
-  padding: 25px 0; 
+.group {
+  position: relative;
+  padding: 25px 0;
 }
 
 .mdl-button {
@@ -91,9 +91,9 @@ label {
 }
 
 .field_with_errors label, input:focus ~ label, input:valid ~ label {
-  top: 0;
-  font-size: 14px;
   color: black;
+  font-size: 14px;
+  top: 0;
 }
 
 .bar { 

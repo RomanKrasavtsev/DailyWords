@@ -11,9 +11,9 @@ class PasswordResetsController < ApplicationController
     # how to reset their password (a url with a random token)
     @user.deliver_reset_password_instructions! if @user
 
-    # Tell the user instructions have been sent 
+    # Tell the user instructions have been sent
     # whether or not email was found.
-    
+
     # This is to not leak information to attackers
     # about which emails exist in the system.
     redirect_to(

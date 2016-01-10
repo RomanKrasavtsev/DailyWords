@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "reviews" do
+describe "review" do
   before(:each) do
     @user = create(:user)
     create(:card, :expired, user_id: @user.id)

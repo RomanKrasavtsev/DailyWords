@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "cards" do
+describe "card" do
   before(:each) do
     @user = create(:user)
     @card = create(:card, :expired, user_id: @user.id)
@@ -20,6 +20,33 @@ describe "cards" do
 
     click_button "Добавить"
     expect(page).to have_content "mother"
+  end
+
+  it "cannot be added (equals to translated text)" do
+    visit new_card_path
+
+    fill_in "card_original_text", with: "mother"
+    fill_in "card_translated_text", with: "mother"
+    fill_in "card_transcription", with: "mother"
+    click_button "Добавить"
+
+    expect(page).to have_content "Слово и Перевод не должны быть одинаковые!"
+  end
+
+  it "cannot be added (not uniqueness)" do
+    visit new_card_path
+    fill_in "card_original_text", with: "mother"
+    fill_in "card_translated_text", with: "мама"
+    fill_in "card_transcription", with: "[ˈmʌðə]"
+    click_button "Добавить"
+
+    visit new_card_path
+    fill_in "card_original_text", with: "mother"
+    fill_in "card_translated_text", with: "мама"
+    fill_in "card_transcription", with: "[ˈmʌðə]"
+    click_button "Добавить"
+
+    expect(page).to have_content "Слово уже существует!"
   end
 
   it "can be edited" do

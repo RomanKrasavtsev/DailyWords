@@ -7,7 +7,7 @@
     %>
   <% end %>
 
-  <%= form_tag settings_path do |f| %>
+  <%= form_for @user, url: settings_path  do |f| %>
     <% if @user.errors.any? %>
       <% for message in @user.errors.full_messages %>
         <%= content_tag :div,
@@ -20,24 +20,24 @@
     <div class="top">
       <div class="original_text login">
         <div class="group">
-          <%= text_field_tag :email, nil, required: true %>
+          <%= f.text_field :email, required: true %>
           <span class="bar"></span>
-          <%= label_tag :email, "Email" %>
+          <%= f.label :email, "Email" %>
         </div>
         <div class="group">
-          <%= password_field_tag :old_password, nil, required: true %>
+          <%= f.password_field :old_password, required: true %>
           <span class="bar"></span>
-          <%= label_tag :old_password, "Текущий пароль" %>
+          <%= f.label :old_password, "Текущий пароль" %>
         </div>
         <div class="group">
-          <%= password_field_tag :password, nil, required: true %>
+          <%= f.password_field :password, required: true %>
           <span class="bar"></span>
-          <%= label_tag :password, "Новый пароль" %>
+          <%= f.label :password, "Новый пароль" %>
         </div>
         <div class="group">
-          <%= password_field_tag :password_confirmation, nil, required: true %>
+          <%= f.password_field :password_confirmation, required: true %>
           <span class="bar"></span>
-          <%= label_tag :password_confirmation, "Повторите новый пароль" %>
+          <%= f.label :password_confirmation, "Повторите новый пароль" %>
         </div>
       </div>
     </div>

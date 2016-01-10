@@ -29,10 +29,21 @@ ru:
   false_html: "Не верно!<br>"
   the_right_answer: "Правильный ответ:"
   your_answer: "Ваш ответ:"
+  confirmation: "Пароль и Подтверждение должны совпадать!"
   activerecord:
+    attributes:
+      card:
+        original_text: "Слово"
     errors:
       models:
         user:
           attributes:
-             email:
-               taken: 'уже зарегистрирован!'
+            email:
+              taken: "уже зарегистрирован!"
+            password_confirmation:
+              confirmation: "Пароль и Подтверждение должны совпадать!"
+        card:
+          attributes:
+            original_text:
+              taken: "уже существует!"
+              invalid: "и Перевод не должны быть одинаковые!"

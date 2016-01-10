@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :registrations, only: [:create]
   get "signup" => "registrations#new", as: "signup"
 
-  resources :profiles, only: [:update]
-  get "profile" => "profiles#edit", as: "settings"
+  get "settings" => "profiles#edit", as: "settings"
+  patch "settings" => "profiles#update"
 
   resources :sessions, only: [:create]
   get "login" => "sessions#new", as: "login"

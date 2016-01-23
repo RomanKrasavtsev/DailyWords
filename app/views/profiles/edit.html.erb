@@ -25,6 +25,11 @@
           <%= f.label :email, "Email" %>
         </div>
         <div class="group">
+          <%= f.text_field :telegram_id, required: true %>
+          <span class="bar"></span>
+          <%= f.label :telegram_id, "Telegram ID" %>
+        </div>
+        <div class="group">
           <%= f.password_field :old_password, required: true %>
           <span class="bar"></span>
           <%= f.label :old_password, "Текущий пароль" %>

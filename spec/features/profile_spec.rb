@@ -45,7 +45,7 @@ describe "profile" do
     expect(page).to have_content "Подтверждение и пароль должны совпадать!"
   end
 
-  it "can be changed changes email" do
+  it "can be changed email" do
     fill_in "user_email", with: "test1@test.ru"
     fill_in "user_old_password", with: "secret"
     fill_in "user_password", with: "secret"

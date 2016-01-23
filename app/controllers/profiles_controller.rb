@@ -9,7 +9,8 @@ class ProfilesController < ApplicationController
       if current_user.update(
           email: user_params[:email],
           password: user_params[:password],
-          password_confirmation: user_params[:password_confirmation]
+          password_confirmation: user_params[:password_confirmation],
+          telegram_id: user_params[:telegram_id]
         )  
         flash[:true] = t(:profile_updated)
         redirect_to settings_path
@@ -26,6 +27,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :old_password, :password, :password_confirmation)
+    params.require(:user).permit(:email, :telegram_id, :old_password, :password, :password_confirmation)
   end
 end

@@ -7,8 +7,10 @@ task :telegram => :environment do
   users.each do |user|
     card = user.cards.review.first
 
-    Telegram::Bot::Client.run(token) do |bot|
-      bot.api.sendMessage(chat_id: user.telegram_id, text: "#{card.original_text} #{card.transcription} - #{card.translated_text}")
-    end
+    if card.present?
+	    Telegram::Bot::Client.run(token) do |bot|
+	      bot.api.sendMessage(chat_id: user.telegram_id, text: "#{card.original_text} #{card.transcription} - #{card.translated_text}")
+	    end
+	  end
   end
 end

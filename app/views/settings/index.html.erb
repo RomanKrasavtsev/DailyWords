@@ -1,0 +1,30 @@
+<% content_for :title, "Настройки" %>
+<div class="center mdl-card mdl-cell mdl-cell--5-col mdl-shadow--8dp" >
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div,
+      msg.html_safe,
+      class: "#{name} mdl-card__supporting-text meta meta--fill"
+    %>
+  <% end %>
+  <div class="top">
+    <div class="settings">
+      <div class="group">
+        <i class="material-icons" role="presentation">email</i>
+        <%= label @user.email, "Email" %>
+        <%= link_to @user.email, settings_email_path %>
+      </div>
+      <div class="group">
+        <i class="material-icons" role="presentation">near_me</i>
+        <%= label_tag @user.telegram_id, "Telegram ID" %>
+        <%= link_to "#{@user.telegram_id} с #{@user.time_from.strftime("%H:%M")} "\
+          "до #{@user.time_to.strftime("%H:%M")}", settings_telegram_path
+        %>
+      </div>
+      <div class="group">
+        <i class="material-icons" role="presentation">https</i>
+        <%= label_tag @user.telegram_id, "Пароль" %>
+        <%= link_to "Изменить", settings_password_path %>
+      </div>
+    </div>
+  </div>
+<end>

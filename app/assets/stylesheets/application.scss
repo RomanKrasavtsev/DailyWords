@@ -84,7 +84,7 @@ label {
   position: absolute;
   pointer-events: none;
   left: 5px;
-  top: 10px;
+  top: 38px;
   transition: 0.2s ease all; 
   -moz-transition: 0.2s ease all; 
   -webkit-transition: 0.2s ease all;
@@ -629,4 +629,35 @@ input:focus ~ .highlight {
 
 .transcription {
   padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.settings {
+  padding-top: 35px;
+  padding-left: 20px;
+}
+
+.settings .group {
+  padding: 35px 0;
+}
+
+.settings a {
+  color: black;
+  padding-left: 10px;
+}
+
+.settings label {
+  left: 0px;
+  top: 0px;
+}
+
+.password {
+  min-height: 285px;
 }

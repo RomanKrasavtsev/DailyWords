@@ -24,11 +24,15 @@ class Card < ActiveRecord::Base
     entered_text.strip!
 
     if original_text.mb_chars.downcase == entered_text.mb_chars.downcase
-      update(review_date: 3.days.since)
+      update_review_date
       true
     else
       false
     end
+  end
+
+  def update_review_date
+    update(review_date: 3.days.since)
   end
 
   protected

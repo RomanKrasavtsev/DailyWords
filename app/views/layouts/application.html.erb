@@ -19,11 +19,27 @@
       <nav class="mdl-navigation">
         <% if current_user %>
           <span class="mdl-badge" data-badge="<%= @quantity %>">
-            <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
+            <%= link_to cards_path, class: "mdl-navigation__link" do %>
+              <i class="material-icons">chrome_reader_mode</i>
+              Все карточки
+            <% end %>
           </span>
-          <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
-          <%= link_to "Настройки", settings_path, class: "mdl-navigation__link" %>
-          <%= link_to "Выйти", logout_path, class: "mdl-navigation__link" %>
+          <%= link_to new_card_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">exposure_plus_1</i>
+            Добавить карточку
+          <% end %>
+          <%= link_to settings_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">settings</i>
+            Настройки
+          <% end %>
+          <%= link_to logout_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">help</i>
+            Помощь
+          <% end %>
+          <%= link_to logout_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">lock_outline</i>
+            Выйти
+          <% end %>
         <% else %>
           <%= link_to "Регистрация", signup_path, class: "mdl-navigation__link" %>
           <%= link_to "Войти", login_path, class: "mdl-navigation__link" %>
@@ -31,21 +47,6 @@
       </nav>
     </div>
   </header>
-
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">DailyWords</span>
-    <nav class="mdl-navigation">
-      <% if current_user %>
-        <%= link_to "Все карточки", cards_path, class: "mdl-navigation__link" %>
-        <%= link_to "Добавить карточку", new_card_path, class: "mdl-navigation__link" %>
-        <%= link_to "Настройки", settings_path, class: "mdl-navigation__link" %>
-        <%= link_to "Выйти", logout_path, class: "mdl-navigation__link" %>
-      <% else %>
-        <%= link_to "Регистрация", signup_path, class: "mdl-navigation__link" %>
-        <%= link_to "Войти", login_path, class: "mdl-navigation__link" %>
-      <% end %>
-    </nav>
-  </div>
 
   <main class="mdl-layout__content">
     <div class="mdl-grid">

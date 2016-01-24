@@ -7,8 +7,16 @@ Rails.application.routes.draw do
   resources :registrations, only: [:create]
   get "signup" => "registrations#new", as: "signup"
 
-  get "settings" => "profiles#edit", as: "settings"
-  patch "settings" => "profiles#update"
+  get "settings" => "settings#index"
+
+  get "settings/email" => "settings#email", as: "settings_email"
+  patch "settings/email" => "settings#update_email", as: "settings_email_update"
+
+  get "settings/telegram" => "settings#telegram", as: "settings_telegram"
+  patch "settings/telegram" => "settings#update_telegram", as: "settings_telegram_update"
+
+  get "settings/password" => "settings#password", as: "settings_password"
+  patch "settings/password" => "settings#update_password", as: "settings_password_update"
 
   resources :sessions, only: [:create]
   get "login" => "sessions#new", as: "login"

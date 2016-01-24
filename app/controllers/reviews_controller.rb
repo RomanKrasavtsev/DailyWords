@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
+  before_action :set_quantity
+
   def new
     @card = current_user.cards.review.first
-    @quantity = current_user.cards.count
   end
 
   def create
@@ -20,6 +21,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_quantity
+    @quantity = current_user.cards.count    
+  end
 
   def review_params
     params.require(:review).permit(

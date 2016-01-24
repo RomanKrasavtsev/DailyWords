@@ -3,7 +3,7 @@ require 'telegram/bot'
 task :telegram => :environment do
   token = ENV["BOT"]
   time = Time.now.utc.strftime("%H:%M")
-  users = User.where("telegram_id IS NOT NULL AND time_from >= '#{time}' AND time_to <= '#{time}'")
+  users = User.where("telegram_id IS NOT NULL AND time_from <= '#{time}' AND time_to >= '#{time}'")
 
   users.each do |user|
     card = user.cards.review.first

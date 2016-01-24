@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "profile" do
+describe "settings" do
   before(:each) do
     @user = create(:user)
 
@@ -12,13 +12,14 @@ describe "profile" do
   end
 
   it "can be changed password" do
-    fill_in "user_old_password", with: "secret"
-    fill_in "user_password", with: "secret1"
-    fill_in "user_password_confirmation", with: "secret1"
+    click_link "Изменить"
+    fill_in "user_new_password", with: "secret1"
+    fill_in "user_new_password_confirmation", with: "secret1"
+    fill_in "user_password", with: "secret"
     click_button "Изменить"
 
     expect(page).to have_content "Ваши данные успешно изменены"
-    first(:link, "Выйти").click
+    click_link "Выйти"
 
     visit login_path
     fill_in "email", with: @user.email
@@ -28,28 +29,29 @@ describe "profile" do
   end
 
   it "cannot be changed password (wrong password)" do
-    fill_in "user_old_password", with: "secret1"
-    fill_in "user_password", with: "secret"
-    fill_in "user_password_confirmation", with: "secret"
+    click_link "Изменить"
+    fill_in "user_new_password", with: "secret"
+    fill_in "user_new_password_confirmation", with: "secret"
+    fill_in "user_password", with: "secret1"
     click_button "Изменить"
 
     expect(page).to have_content "Неверно указан текущий пароль!"
   end
 
   it "cannot be changed password (bad password confirmation)" do
-    fill_in "user_old_password", with: "secret"
+    click_link "Изменить"
+    fill_in "user_new_password", with: "secret"
+    fill_in "user_new_password_confirmation", with: "secret1"
     fill_in "user_password", with: "secret"
-    fill_in "user_password_confirmation", with: "secret1"
     click_button "Изменить"
 
     expect(page).to have_content "Подтверждение и пароль должны совпадать!"
   end
 
   it "can be changed email" do
+    click_link "test@test.ru"
     fill_in "user_email", with: "test1@test.ru"
-    fill_in "user_old_password", with: "secret"
     fill_in "user_password", with: "secret"
-    fill_in "user_password_confirmation", with: "secret"
     click_button "Изменить"
     expect(page).to have_content "Ваши данные успешно изменены"
 
@@ -62,20 +64,17 @@ describe "profile" do
     expect(page).to have_content "Выйти"
   end
 
-  it "can be changed email and password" do
-    fill_in "user_email", with: "test2@test.ru"
-    fill_in "user_old_password", with: "secret"
+  it "cannot be changed email (bad password)" do
+    click_link "test@test.ru"
+    fill_in "user_email", with: "test1@test.ru"
     fill_in "user_password", with: "secret2"
-    fill_in "user_password_confirmation", with: "secret2"
     click_button "Изменить"
-    expect(page).to have_content "Ваши данные успешно изменены"
+    expect(page).to have_content "Неверно указан текущий пароль!"
+  end
 
-    first(:link, "Выйти").click
+  it "can be changed telegram" do
+  end
 
-    visit login_path
-    fill_in "email", with: "test2@test.ru"
-    fill_in "password", with: "secret2"
-    click_button "Войти"
-    expect(page).to have_content "Выйти"
+  it "cannot be changed telegram (bad password)" do
   end
 end

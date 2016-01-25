@@ -25,12 +25,20 @@
           <%= f.label :telegram_id, "Telegram ID" %>
         </div>
         <div class="group">
-          <%= f.text_field :time_from, required: true, value: current_user.time_from.strftime("%H:%M") %>
+          <%= f.text_field :time_from, required: true,
+            value: ( current_user.time_from.present? ? current_user.time_from 
+                      : "07:00".to_time
+                   ).strftime("%H:%M")
+          %>
           <span class="bar"></span>
           <%= label_tag :time_from, "Время с (UTC)" %>
         </div>
         <div class="group">
-          <%= f.text_field :time_to, required: true, value: current_user.time_to.strftime("%H:%M") %>
+          <%= f.text_field :time_to, required: true,
+            value: ( current_user.time_to.present? ? current_user.time_to
+                      : "18:15".to_time
+                   ).strftime("%H:%M")
+          %>
           <span class="bar"></span>
           <%= label_tag :time_to, "Время до (UTC)" %>
         </div>

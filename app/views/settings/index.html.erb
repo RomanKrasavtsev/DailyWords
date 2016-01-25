@@ -15,10 +15,15 @@
       </div>
       <div class="group">
         <i class="material-icons" role="presentation">near_me</i>
-        <%= label_tag @user.telegram_id, "Telegram ID" %>
-        <%= link_to "#{@user.telegram_id} с #{@user.time_from.strftime("%H:%M")} "\
-          "до #{@user.time_to.strftime("%H:%M")}", settings_telegram_path
-        %>
+        <%= label @user.telegram_id, "Telegram" %>
+        <% if @user.telegram_id.present? %>
+          <%= link_to "#{@user.telegram_id} с #{@user.time_from.strftime("%H:%M")} "\
+              "до #{@user.time_to.strftime("%H:%M")} по UTC", settings_telegram_path
+          %>
+        <% else %>
+        <%= link_to "Настроить", settings_telegram_path %>
+          
+        <% end %>
       </div>
       <div class="group">
         <i class="material-icons" role="presentation">https</i>

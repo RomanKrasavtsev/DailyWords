@@ -73,8 +73,22 @@ describe "settings" do
   end
 
   it "can be changed telegram" do
+    click_link "Настроить"
+    fill_in "user_telegram_id", with: "777"
+    fill_in "user_time_from", with: "10:05"
+    fill_in "user_time_to", with: "18:55"
+    fill_in "user_password", with: "secret"
+    click_button "Изменить"
+    expect(page).to have_content "777 с 10:05 до 18:55 по UTC"
   end
 
   it "cannot be changed telegram (bad password)" do
+    click_link "Настроить"
+    fill_in "user_telegram_id", with: "777"
+    fill_in "user_time_from", with: "10:05"
+    fill_in "user_time_to", with: "18:55"
+    fill_in "user_password", with: "secret2"
+    click_button "Изменить"
+    expect(page).to have_content "Неверно указан текущий пароль!"
   end
 end

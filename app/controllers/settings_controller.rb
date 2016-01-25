@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :get_quantity
+  before_action :set_quantity
   before_action :set_user, only: [:index, :email, :password, :telegram]
 
   def index
@@ -74,7 +74,7 @@ class SettingsController < ApplicationController
     @user ||= current_user
   end
 
-  def get_quantity
+  def set_quantity
     @quantity = current_user.cards.count
   end
 

@@ -14,7 +14,10 @@
 <div class="layout-transparent mdl-layout mdl-js-layout">
   <header class="mdl-layout__header mdl-layout__header--transparent">
     <div class="mdl-layout__header-row">
-      <%= link_to "DailyWords", root_path, class: "mdl-layout-title white-title" %>
+      <%= link_to root_path, class: "mdl-layout-title white-title" do %>
+        <i class="material-icons">school</i>
+        DailyWords
+      <% end %>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
         <% if current_user %>
@@ -32,7 +35,7 @@
             <i class="material-icons">settings</i>
             Настройки
           <% end %>
-          <%= link_to logout_path, class: "mdl-navigation__link" do %>
+          <%= link_to helps_path, class: "mdl-navigation__link" do %>
             <i class="material-icons">help</i>
             Помощь
           <% end %>
@@ -41,8 +44,14 @@
             Выйти
           <% end %>
         <% else %>
-          <%= link_to "Регистрация", signup_path, class: "mdl-navigation__link" %>
-          <%= link_to "Войти", login_path, class: "mdl-navigation__link" %>
+          <%= link_to signup_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">perm_identity</i>
+            Регистрация
+          <% end %>
+          <%= link_to login_path, class: "mdl-navigation__link" do %>
+            <i class="material-icons">lock_open</i>
+            Войти
+          <% end %>
         <% end %>
       </nav>
     </div>

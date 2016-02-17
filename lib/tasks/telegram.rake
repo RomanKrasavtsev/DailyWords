@@ -10,7 +10,7 @@ task :telegram => :environment do
 
     if card.present?
 	    Telegram::Bot::Client.run(token) do |bot|
-	      bot.api.sendMessage(chat_id: user.telegram_id, text: "#{card.original_text} #{card.transcription} - #{card.translated_text}")
+	      bot.api.sendMessage(chat_id: user.telegram_id, text: "#{card.original_text} - #{card.translated_text}")
 	    end
       card.update_review_date
 	  end

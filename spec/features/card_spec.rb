@@ -14,9 +14,8 @@ describe "card" do
   it "can be added" do
     visit new_card_path
 
-    fill_in "card_original_text", with: "mother"
+    fill_in "card_original_text", with: "mother [ˈmʌðə]"
     fill_in "card_translated_text", with: "мама"
-    fill_in "card_transcription", with: "[ˈmʌðə]"
 
     click_button "Добавить"
     expect(page).to have_content "mother"
@@ -25,9 +24,8 @@ describe "card" do
   it "cannot be added (equals to translated text)" do
     visit new_card_path
 
-    fill_in "card_original_text", with: "mother"
-    fill_in "card_translated_text", with: "mother"
-    fill_in "card_transcription", with: "mother"
+    fill_in "card_original_text", with: "  mother"
+    fill_in "card_translated_text", with: " mother "
     click_button "Добавить"
 
     expect(page).to have_content "Слово и Перевод не должны быть одинаковые!"
@@ -35,15 +33,13 @@ describe "card" do
 
   it "cannot be added (not uniqueness)" do
     visit new_card_path
-    fill_in "card_original_text", with: "mother"
+    fill_in "card_original_text", with: "mother [ˈmʌðə]"
     fill_in "card_translated_text", with: "мама"
-    fill_in "card_transcription", with: "[ˈmʌðə]"
     click_button "Добавить"
 
     visit new_card_path
-    fill_in "card_original_text", with: "mother"
+    fill_in "card_original_text", with: "mother [ˈmʌðə]"
     fill_in "card_translated_text", with: "мама"
-    fill_in "card_transcription", with: "[ˈmʌðə]"
     click_button "Добавить"
 
     expect(page).to have_content "Слово уже существует!"
@@ -54,9 +50,8 @@ describe "card" do
     click_button "#{@card.id}"
     click_link "Редактировать"
 
-    fill_in "card_original_text", with: "mother"
+    fill_in "card_original_text", with: "mother [ˈmʌðə]"
     fill_in "card_translated_text", with: "мама"
-    fill_in "card_transcription", with: "[ˈmʌðə]"
     click_button "Обновить"
     expect(page).to have_content "mother"
   end

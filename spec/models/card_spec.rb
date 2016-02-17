@@ -7,9 +7,8 @@ describe Card do
 
   it "validates with erorrs" do
     card = Card.new(
-      original_text: "Дом",
-      translated_text: "дОм",
-      transcription: "[haʊs]",
+      original_text: "Дом ",
+      translated_text: " дОм",
       user_id: @user.id
     )
 
@@ -20,9 +19,8 @@ describe Card do
   context "when checked translation" do
     let(:card) do
       Card.new(
-        original_text: "house",
+        original_text: "house [haʊs]",
         translated_text: "дом",
-        transcription: "[haʊs]",
         user_id: @user.id
       )
     end

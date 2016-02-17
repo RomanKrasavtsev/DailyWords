@@ -13,7 +13,7 @@ describe "review" do
 
   it "will be right", js: true do
     visit root_path
-    fill_in "review_entered_text", with: "House"
+    fill_in "review_entered_text", with: "house"
     click_button "Проверить"
     expect(page).to have_content "Верно!"
   end

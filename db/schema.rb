@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123235402) do
+ActiveRecord::Schema.define(version: 20160217194504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
     t.string   "original_text"
-    t.string   "transcription"
     t.string   "translated_text"
     t.date     "review_date"
     t.datetime "created_at",      null: false

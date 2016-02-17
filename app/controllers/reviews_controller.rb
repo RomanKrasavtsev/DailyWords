@@ -10,10 +10,10 @@ class ReviewsController < ApplicationController
 
     if card.check_translation(review_params[:entered_text])
       flash[:true] = "#{t(:true_html)}"\
-                     "#{t(:the_right_answer)} #{card.original_text} #{card.transcription}<br>"
+                     "#{t(:the_right_answer)} #{card.original_text}<br>"
     else
       flash[:false] = "#{t(:false_html)}"\
-                      "#{t(:the_right_answer)} #{card.original_text} #{card.transcription}<br>"\
+                      "#{t(:the_right_answer)} #{card.original_text}<br>"\
                       "#{t(:your_answer)} #{review_params[:entered_text]}"
     end
 

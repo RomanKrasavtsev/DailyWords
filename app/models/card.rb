@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
 
   before_validation :ensure_review_date_has_a_value
   validates :original_text, :translated_text,
-            :transcription, :user_id, presence: true
+            :user_id, presence: true
   validates :original_text, uniqueness: true
   validate :original_text_equal_to_translated_text
 
@@ -11,8 +11,8 @@ class Card < ActiveRecord::Base
   scope :review, -> { expired.offset(rand(expired.count)) }
 
   def original_text_equal_to_translated_text
-    original_text.strip!
-    translated_text.strip!
+    original_text.squish!
+    translated_text.squish!
 
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
       errors.add(:original_text)
@@ -20,10 +20,7 @@ class Card < ActiveRecord::Base
   end
 
   def check_translation(entered_text)
-    original_text.strip!
-    entered_text.strip!
-
-    if original_text.mb_chars.downcase == entered_text.mb_chars.downcase
+    if original_text.gsub(/\[.*\]/, "").strip.mb_chars.downcase == entered_text.mb_chars.downcase
       update_review_date
       true
     else

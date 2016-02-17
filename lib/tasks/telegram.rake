@@ -13,6 +13,8 @@ task :telegram => :environment do
 	      bot.api.sendMessage(chat_id: user.telegram_id, text: "#{card.original_text} - #{card.translated_text}")
 	    end
       card.update_review_date
+      card.number_of_sendings += 1
+      card.save
 	  end
   end
 end

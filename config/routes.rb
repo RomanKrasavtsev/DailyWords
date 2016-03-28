@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "signup" => "registrations#new", as: "signup"
 
   get "settings" => "settings#index"
+  get "telegram" => "telegram#index"
 
   get "settings/email" => "settings#email", as: "settings_email"
   patch "settings/email" => "settings#update_email", as: "settings_email_update"

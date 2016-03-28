@@ -3,6 +3,8 @@ require 'open-uri'
 require 'net/http'
 
 class TelegramController < ApplicationController
+  skip_before_action :require_login
+
   def index
     token = ENV["BOT"]
 

@@ -27,15 +27,15 @@ class TelegramController < ApplicationController
   def telegram_params
     params.permit(
       :update_id,
-      :message, {
+      :message => {
         :message_id,
-        :from, {
+        :from => {
           :id,
           :first_name,
           :last_name,
           :username
         },
-        :chat, {
+        :chat => {
           :id,
           :first_name,
           :last_name,
@@ -45,17 +45,17 @@ class TelegramController < ApplicationController
         :date,
         :text
       },
-      :telegram, {
+      :telegram => {
         :update_id,
-        :message, {
+        :message => {
           :message_id,
-          :from, {
+          :from => {
             :id,
             :first_name,
             :last_name,
             :username
           },
-          :chat, {
+          :chat => {
             :id,
             :first_name,
             :last_name,

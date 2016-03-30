@@ -8,64 +8,61 @@ class TelegramController < ApplicationController
 
   def index
     token = ENV["BOT"]
+    text = params[:message][:text]
 
-    logger.info telegram_params
-    # telegram = telegram_params[:message][:text]
+    if text == "ok"
+      chat_id = params["message"]["chat"]["id"]
 
-    # if telegram["ok"]
-    #   chat_id = telegram_params["message"]["chat"]["id"]
+      answer = "Hello!"
+      JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{answer}"))
+    end
 
-    #   text = "Hello!"
-    #   JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{text}"))
-    # end
-
-    #JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=13344296&text=Hi"))
   end
 
   private
 
   def telegram_params
-    params.permit(
-      :update_id,
-      :message => [
-        :message_id,
-        :from => [
-          :id,
-          :first_name,
-          :last_name,
-          :username
-        ],
-        :chat => [
-          :id,
-          :first_name,
-          :last_name,
-          :username,
-          :type
-        ],
-        :date,
-        :text
-      ],
-      :telegram => [
-        :update_id,
-        :message => [
-          :message_id,
-          :from => [
-            :id,
-            :first_name,
-            :last_name,
-            :username
-          ],
-          :chat => [
-            :id,
-            :first_name,
-            :last_name,
-            :username,
-            :type
-          ],
-          :date,
-          :text
-        ]
-      ]
-    )
+    # params.permit(
+    #   :update_id,
+    #   :message, {
+    #     :message_id,
+    #     :from, {
+    #       :id,
+    #       :first_name,
+    #       :last_name,
+    #       :username
+    #     },
+    #     :chat, {
+    #       :id,
+    #       :first_name,
+    #       :last_name,
+    #       :username,
+    #       :type
+    #     },
+    #     :date,
+    #     :text
+    #   },
+    #   :telegram, {
+    #     :update_id,
+    #     :message, {
+    #       :message_id,
+    #       :from, {
+    #         :id,
+    #         :first_name,
+    #         :last_name,
+    #         :username
+    #       },
+    #       :chat, {
+    #         :id,
+    #         :first_name,
+    #         :last_name,
+    #         :username,
+    #         :type
+    #       },
+    #       :date,
+    #       :text
+    #     }
+    #   }
+    # )
   end
 end

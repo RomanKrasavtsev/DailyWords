@@ -37,9 +37,9 @@ class TelegramController < ApplicationController
 
   def telegram_params
     params.permit(
-      message[:text],
-      message[:chat][id],
-      message[:from][first_name]
+      :message[:text],
+      :message[:chat][:id],
+      :message[:from][:first_name]
     )
   end
 end

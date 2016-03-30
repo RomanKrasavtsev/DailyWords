@@ -9,7 +9,7 @@ class TelegramController < ApplicationController
   def index
     token = ENV["BOT"]
 
-    logger.info telegram_params
+    logger.info params
     # telegram = telegram_params[:message][:text]
 
     # if telegram["ok"]
@@ -19,7 +19,7 @@ class TelegramController < ApplicationController
     #   JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{text}"))
     # end
 
-    JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=13344296&text=Hi"))
+    #JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=13344296&text=Hi"))
   end
 
   private

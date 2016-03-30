@@ -60,6 +60,8 @@ class TelegramController < ApplicationController
         :update_id,
         message: [
           :message_id,
+          :date,
+          :text,
           from: [
             :id,
             :first_name,
@@ -72,9 +74,7 @@ class TelegramController < ApplicationController
             :last_name,
             :username,
             :type
-          ],
-          :date,
-          :text
+          ]
         ]
       ]
     )

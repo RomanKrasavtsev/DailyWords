@@ -13,13 +13,17 @@ class TelegramController < ApplicationController
     if text == "ok"
       chat_id = params["message"]["chat"]["id"]
 
-      answer = "Привет! Ваш ID: #{chat_id}"
+      answer = prepare_message("Привет! Ваш ID: #{chat_id}")
       JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{answer}"))
     end
 
   end
 
   private
+
+  def prepare_message(text)
+    text.gsub!(" ","%20").gsub!("+","%2B")
+  end
 
   def telegram_params
     # params.permit(

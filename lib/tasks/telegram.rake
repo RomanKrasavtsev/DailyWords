@@ -9,7 +9,7 @@ task :telegram => :environment do
 
   users.each do |user|
     card = user.cards.review.first
-    answer = "#{card.original_text} - #{card.translated_text}"
+    answer = "#{card.original_text} - #{card.translated_text}".gsub(" ","%20").gsub("+","%2B")
 
     if card.present?
       JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{user.telegram_id}&text=#{answer}"))

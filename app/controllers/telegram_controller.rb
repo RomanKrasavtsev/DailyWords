@@ -27,8 +27,45 @@ class TelegramController < ApplicationController
   def telegram_params
     params.permit(
       :update_id,
-      :message,
-      :telegram
+      :message, {
+        :message_id,
+        :from, {
+          :id,
+          :first_name,
+          :last_name,
+          :username
+        },
+        :chat, {
+          :id,
+          :first_name,
+          :last_name,
+          :username,
+          :type
+        },
+        :date,
+        :text
+      },
+      :telegram, {
+        :update_id,
+        :message, {
+          :message_id,
+          :from, {
+            :id,
+            :first_name,
+            :last_name,
+            :username
+          },
+          :chat, {
+            :id,
+            :first_name,
+            :last_name,
+            :username,
+            :type
+          },
+          :date,
+          :text
+        }
+      }
     )
   end
 end

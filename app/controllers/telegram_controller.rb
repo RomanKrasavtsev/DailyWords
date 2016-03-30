@@ -14,6 +14,7 @@ class TelegramController < ApplicationController
       chat_id = params["message"]["chat"]["id"]
 
       answer = prepare_message("Привет! Ваш ID: #{chat_id}")
+        logger.debug "###### #{answer}"
       JSON.load(open("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{answer}"))
     end
 

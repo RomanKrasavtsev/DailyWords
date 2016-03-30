@@ -36,10 +36,10 @@ class TelegramController < ApplicationController
   private
 
   def telegram_params
-    params.require(:message).permit(
-      :text,
-      chat:[:id],
-      from:[:first_name]
+    params.permit(
+      message:[:text],
+      message:[:chat][:id],
+      message:[:from][:first_name]
     )
   end
 end

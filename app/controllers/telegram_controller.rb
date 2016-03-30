@@ -8,12 +8,13 @@ class TelegramController < ApplicationController
 
   def index
     token = ENV["BOT"]
-    text = params[:message][:text]
-    chat_id = params[:message][:chat][:id]
+    text = telegram_params[:message][:text]
+    chat_id = telegram_params[:message][:chat][:id]
+    name = telegram_params[:message][:from][:first_name]
 
     case text
     when "/start"
-      answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{chat_id}"
+      answer = "Привет, #{name}! Ваш ID: #{chat_id}"
     when "/id"
       answer = "Ваш ID: #{chat_id}"
     when "/help"

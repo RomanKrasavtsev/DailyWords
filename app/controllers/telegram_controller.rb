@@ -9,6 +9,7 @@ class TelegramController < ApplicationController
   def index
     token = ENV["BOT"]
 
+    logger.info telegram_params
     telegram = telegram_params[:message][:text]
 
     if telegram["ok"]

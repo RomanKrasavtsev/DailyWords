@@ -13,7 +13,7 @@ class TelegramController < ApplicationController
 
     case text
     when "/start"
-      answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{params[:message][:from][:id]}")
+      answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{chat_id}"
     when "/id"
       answer = "Привет! Ваш ID: #{chat_id}"
     when "/help"

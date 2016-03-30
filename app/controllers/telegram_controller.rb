@@ -9,10 +9,14 @@ class TelegramController < ApplicationController
   def index
     token = ENV["BOT"]
     text = params[:message][:text]
+    chat_id = params[:message][:chat][:id]
 
-    if text == "id"
+    case text
+    when "/start"
+      answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{params[:message][:from][:id]}")
+    when "/id"
       answer = "Привет! Ваш ID: #{chat_id}"
-    elsif text == "help"
+    when "/help"
       answer = "@DailyWordsRuBot - это бот сайта http://dailywords.ru,"\
         " который поможет Вам выучить иностранные слова,"\
         " горячие клавиши операционной системы или приложений,"\
@@ -22,8 +26,6 @@ class TelegramController < ApplicationController
         "/help - показать справку\n"\
         "/id - показать Ваш ID\n"
     end
-
-    chat_id = params["message"]["chat"]["id"]
 
     url = URI.parse(URI.encode("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{chat_id}&text=#{answer}"))
     JSON.load(open(url))

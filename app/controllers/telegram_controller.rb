@@ -11,6 +11,8 @@ class TelegramController < ApplicationController
     text = params[:message][:text]
     chat_id = params[:message][:chat][:id]
 
+    logger.debug "*** #{telegram_params} ***"
+
     case text
     when "/start"
       answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{chat_id}"

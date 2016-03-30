@@ -61,13 +61,13 @@ class TelegramController < ApplicationController
         message: [
           :message_id,
           :date,
-          :text,
           from: [
             :id,
             :first_name,
             :last_name,
             :username
           ],
+          :text,
           chat: [
             :id,
             :first_name,

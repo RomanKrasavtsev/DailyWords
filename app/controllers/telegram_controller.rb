@@ -11,7 +11,7 @@ class TelegramController < ApplicationController
     text = params[:message][:text]
     chat_id = params[:message][:chat][:id]
 
-    logger.debug "*** #{telegram_params} ***"
+    logger.debug telegram_params
 
     case text
     when "/start"

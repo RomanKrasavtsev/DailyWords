@@ -15,7 +15,7 @@ class TelegramController < ApplicationController
     when "/start"
       answer = "Привет, #{params[:message][:from][:first_name]}! Ваш ID: #{chat_id}"
     when "/id"
-      answer = "Привет! Ваш ID: #{chat_id}"
+      answer = "Ваш ID: #{chat_id}"
     when "/help"
       answer = "@DailyWordsRuBot - это бот сайта http://dailywords.ru,"\
         " который поможет Вам выучить иностранные слова,"\
@@ -34,47 +34,10 @@ class TelegramController < ApplicationController
   private
 
   def telegram_params
-    # params.permit(
-    #   :update_id,
-    #   message: {
-    #     :message_id,
-    #     from: {
-    #       :id,
-    #       :first_name,
-    #       :last_name,
-    #       :username
-    #     },
-    #     chat: {
-    #       :id,
-    #       :first_name,
-    #       :last_name,
-    #       :username,
-    #       :type
-    #     },
-    #     :date,
-    #     :text
-    #   },
-    #   telegram: {
-    #     :update_id,
-    #     message: {
-    #       :message_id,
-    #       from: {
-    #         :id,
-    #         :first_name,
-    #         :last_name,
-    #         :username
-    #       },
-    #       chat: {
-    #         :id,
-    #         :first_name,
-    #         :last_name,
-    #         :username,
-    #         :type
-    #       },
-    #       :date,
-    #       :text
-    #     }
-    #   }
-    # )
+    params.permit(
+      message:[:text],
+      message:[:chat][:id],
+      message:[:from][:first_name]
+    )
   end
 end

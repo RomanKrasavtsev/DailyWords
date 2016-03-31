@@ -12,7 +12,7 @@ task :telegram => :environment do
 
     if card.present?
       answer = "*#{card.original_text}* - #{card.translated_text}"
-      url = URI.parse(URI.encode("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{user.telegram_id}&text=#{answer}"))
+      url = URI.parse(URI.encode("https://api.telegram.org/bot#{token}/sendMessage?chat_id=#{user.telegram_id}&text=#{answer}&parse_mode=Markdown"))
       JSON.load(open(url))
 
       card.update_review_date

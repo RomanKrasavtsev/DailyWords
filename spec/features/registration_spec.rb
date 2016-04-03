@@ -3,7 +3,7 @@ require "rails_helper"
 describe "registration" do
   it "can be registered" do
     visit root_path
-    first(:link, "Регистрация").click
+    click_link "Зарегистрироваться"
 
     fill_in "user_email", with: "test@test.ru"
     fill_in "user_password", with: "secret"
@@ -15,7 +15,7 @@ describe "registration" do
 
   it "cannot be registered (email exists)" do
     visit root_path
-    first(:link, "Регистрация").click
+    click_link "Зарегистрироваться"
 
     fill_in "user_email", with: "test@test.ru"
     fill_in "user_password", with: "secret"
@@ -26,7 +26,7 @@ describe "registration" do
     first(:link, "Выйти").click
 
     visit root_path
-    first(:link, "Регистрация").click
+    click_link "Зарегистрироваться"
     fill_in "user_email", with: "test@test.ru"
     fill_in "user_password", with: "secret"
     fill_in "user_password_confirmation", with: "secret"
@@ -36,7 +36,7 @@ describe "registration" do
 
   it "cannot be registered (bad password confirmation)" do
     visit root_path
-    first(:link, "Регистрация").click
+    click_link "Зарегистрироваться"
 
     fill_in "user_email", with: "test@test.ru"
     fill_in "user_password", with: "secret"

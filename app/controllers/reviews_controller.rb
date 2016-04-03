@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :set_quantity
 
+  # get a card for review
   def new
     @card = current_user.cards.review.first
   end
 
+  # check translation
   def create
     card = current_user.cards.find(review_params[:card_id])
 

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>DailyWords</title>
+  <meta name="author" content="Roman Krasavtsev" />
+  <meta name="description" content="The best way to expand your vocabulary" />
+  <meta name="keywords"  content="english, word, vocabulary, expand, increase, noun, verb" />
+</head>
+<body>
+
+<nav id="menu" class="navbar navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand shadowtext" href="/">
+        <i class="fa fa-graduation-cap"></i>
+        DailyWords
+      </a>
+    </div>
+    
+    <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
+      <ul class="nav navbar-nav">        
+        <li>
+          <%= link_to signup_path, class: "pink" do %>
+            <i class="fa fa-user-plus"></i>
+            Зарегистрироваться
+          <% end %>
+        </li>
+        <li>
+          <%= link_to login_path do %>
+            <i class="fa fa-unlock"></i>
+            Войти
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="overlay"></div>
+<div id="fullpage">
+  <div class="section" id="section0">
+    <h1 class="shadowtext">DailyWords</h1>
+    <i class="fa fa-paper-plane fa-5x shadowtext"></i>
+    <h2 class="shadowtext">Ежечасно увеличивайте свой словарный запас английского языка используя Telegram</h2>
+  </div>
+
+  <div class="section" id="section1">
+    <h1 class="shadowtext">Добавляйте незнакомые слова и перевод</h1>
+    <%= image_tag("word.png", alt: "New word", height: '500') %>
+  </div>
+
+  <div class="section" id="section2">
+    <h1 class="shadowtext">Каждый час получайте новое слово в Telegram</h1>
+    <%= image_tag("telegram.png", alt: "Telegram", height: '500') %>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <a target="_blank" href="https://telegram.me/DailyWordsRuBot">
+          <i class="fa fa-paper-plane"></i>
+          Открыть DailyWords в Telegram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="section3">
+    <h1 class="shadowtext">Запоминайте слова и применяйте их на практике</h1>
+    <h1 class="shadowtext">Стоимость 0 <i class="fa fa-rub"></i></h1>
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <%= link_to signup_path do %>
+          Присоединиться прямо сейчас
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.8/jquery.fullPage.min.css" />
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<style>
+  #overlay{
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    opacity: 0.50;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+  }
+  a, a:hover, a:visited{
+    color: white;
+  }
+  nav a{
+    font-size: 15px;
+    border-radius: 2px;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  .navbar-nav>li>a:hover{
+    background: white;
+  }
+  nav a:hover{
+    color: black;
+  }
+  .navbar-brand:hover{
+    color: white;
+  }
+  .section{
+    text-align: center;
+    background-size: cover;
+    color: white;
+  }
+  #section0{
+    background-image: url("<%= asset_path('section0.jpg') %>");
+    padding: 0% 0 0 0;
+  }
+  #section1{
+    background-image: url("<%= asset_path('section1.jpg') %>");
+    padding: 0% 0 0 0;
+  }
+  #section2{
+    background-image: url("<%= asset_path('section2.jpg') %>");
+    padding: 0% 0 0 0;
+  }
+  #section3{
+    background-image: url("<%= asset_path('section3.jpg') %>");
+    padding: 0% 0 0 0;
+  }
+  #fp-nav ul li a span, .fp-slidesNav ul li a span{
+    background: white;
+  }
+  .pink{
+    background: #ff4081;   
+  }
+  .shadowtext{
+    text-shadow: 2px 2px 8px black
+   }
+  .row{
+    margin-top: 25px;
+  }
+  .row a{
+    padding: 15px;
+    background: #ff4081;
+    font-size: 18px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+  .row a:hover{
+    text-decoration: none;
+    background: white;
+    color: black;
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.8/jquery.fullPage.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  $('#fullpage').fullpage({  
+    navigation: true,
+    navigationPosition: 'right'
+  });
+});
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter35041425 = new Ya.Metrika({ id:35041425, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/35041425" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>

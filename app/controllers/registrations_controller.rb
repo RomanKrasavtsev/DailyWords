@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to root_path
+      redirect_to new_card_path
     else
       render :new
     end

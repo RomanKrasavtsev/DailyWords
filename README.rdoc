@@ -1,1 +1,2 @@
 {<img src="https://travis-ci.org/RomanKrasavtsev/DailyWords.svg" alt="Build Status" />}[https://travis-ci.org/RomanKrasavtsev/DailyWords]
+{<img src="https://codeclimate.com/github/RomanKrasavtsev/DailyWords/badges/gpa.svg" />}[https://codeclimate.com/github/RomanKrasavtsev/DailyWords]

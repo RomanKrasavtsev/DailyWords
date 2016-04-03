@@ -41,19 +41,8 @@ class TelegramController < ApplicationController
         :message_id,
         :date,
         :text,
-        from: [
-          :id,
-          :first_name,
-          :last_name,
-          :username
-        ],
-        chat: [
-          :id,
-          :first_name,
-          :last_name,
-          :username,
-          :type
-        ]
+        from: [:id, :first_name, :last_name, :username],
+        chat: [:id, :first_name, :last_name, :username, :type]
       ],
       telegram: [
         :update_id,
@@ -61,19 +50,8 @@ class TelegramController < ApplicationController
           :message_id,
           :date,
           :text,
-          from: [
-            :id,
-            :first_name,
-            :last_name,
-            :username
-          ],
-          chat: [
-            :id,
-            :first_name,
-            :last_name,
-            :username,
-            :type
-          ]
+          from: [:id, :first_name, :last_name, :username],
+          chat: [:id, :first_name, :last_name, :username, :type]
         ]
       ]
     )

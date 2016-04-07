@@ -1,3 +1,4 @@
 {<img src="https://travis-ci.org/RomanKrasavtsev/DailyWords.svg" alt="Build Status" />}[https://travis-ci.org/RomanKrasavtsev/DailyWords]
 {<img src="https://codeclimate.com/github/RomanKrasavtsev/DailyWords/badges/gpa.svg" />}[https://codeclimate.com/github/RomanKrasavtsev/DailyWords]
 {<img src="https://gemnasium.com/RomanKrasavtsev/DailyWords.svg" alt="Dependency Status" />}[https://gemnasium.com/RomanKrasavtsev/DailyWords]
+{<img src="https://coveralls.io/repos/github/RomanKrasavtsev/DailyWords/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/RomanKrasavtsev/DailyWords?branch=master]

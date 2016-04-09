@@ -38,7 +38,6 @@
   </div>
 </nav>
 
-<div id="overlay"></div>
 <div id="fullpage">
   <div class="section" id="section0">
     <h1 class="shadowtext">DailyWords</h1>
@@ -77,21 +76,17 @@
   </div>
 </div>
 
+<nav class="navbar navbar-fixed-bottom">
+  <div class="container">
+    <span class="shadowtext">© 2016 Roman Krasavtsev</span>
+  </div>
+</nav>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.8/jquery.fullPage.min.css" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <style>
-  #overlay{
-    background-color: #000;
-    height: 100%;
-    left: 0;
-    opacity: 0.50;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 0;
-  }
   a, a:hover, a:visited{
     color: white;
   }
@@ -138,7 +133,8 @@
     background: #ff4081;   
   }
   .shadowtext{
-    text-shadow: 2px 2px 8px black
+    text-shadow: 2px 2px 8px black;
+    color: white;
    }
   .row{
     margin-top: 25px;

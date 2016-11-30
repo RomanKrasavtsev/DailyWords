@@ -19,13 +19,13 @@ class ReviewsController < ApplicationController
                       "#{t(:your_answer)} #{review_params[:entered_text]}"
     end
 
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
   def set_quantity
-    @quantity = current_user.cards.count    
+    @quantity = current_user.cards.count
   end
 
   def review_params

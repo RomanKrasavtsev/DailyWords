@@ -1,4 +1,4 @@
-![https://travis-ci.org/RomanKrasavtsev/DailyWords](<img src="https://travis-ci.org/RomanKrasavtsev/DailyWords.svg" alt="Build Status" />)
+[![Build Status](https://travis-ci.org/RomanKrasavtsev/DailyWords.svg?branch=master)](https://travis-ci.org/RomanKrasavtsev/DailyWords)
 
 [![Build Status](https://travis-ci.org/RomanKrasavtsev/DailyWords.svg?branch=master)](https://travis-ci.org/RomanKrasavtsev/DailyWords)
 

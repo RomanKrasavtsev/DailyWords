@@ -62,7 +62,6 @@ describe "card" do
     visit cards_path
     click_button "#{@card.id}"
     click_link "Удалить"
-    page.driver.browser.switch_to.alert.accept
     visit cards_path
     expect(page).to have_no_content "mother"
   end

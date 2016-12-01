@@ -38,6 +38,8 @@ gem 'newrelic_rpm'
 # gem 'capistrano-rails', group: :development
 
 group :development do
+  gem "rubocop", require: false
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

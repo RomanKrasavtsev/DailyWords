@@ -18,6 +18,6 @@ task :telegram => :environment do
       card.update_review_date
       card.number_of_sendings += 1
       card.save
-	  end
+    end
   end
 end
